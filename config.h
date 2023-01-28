@@ -220,106 +220,46 @@ static Key keys[] = {
 
     {MODKEY, XK_equal, setgap, {.i = -1}}, /* super  =           |  窗口增大 */
     {MODKEY, XK_minus, setgap, {.i = +1}}, /* super  -           |  窗口减小 */
-    {MODKEY | ShiftMask,
-     XK_equal,
-     setgap,
-     {.i = 0}}, /* super shift =      |  窗口重置 */
-    {MODKEY | ShiftMask,
-     XK_minus,
-     setgap,
-     {.i = -100}}, /* super shift -      |  窗口重设 */
+    {MODKEY | ShiftMask, XK_equal, setgap, {.i = 0}}, /* super shift =      |  窗口重置 */
+    {MODKEY | ShiftMask, XK_minus, setgap, {.i = -100}}, /* super shift -      |  窗口重设 */
 
-    {MODKEY | ControlMask,
-     XK_k,
-     movewin,
-     {.ui = UP}}, /* super ctrl k       |  移动窗口 */
-    {MODKEY | ControlMask,
-     XK_j,
-     movewin,
-     {.ui = DOWN}}, /* super ctrl j       |  移动窗口 */
-    {MODKEY | ControlMask,
-     XK_h,
-     movewin,
-     {.ui = LEFT}}, /* super ctrl h       |  移动窗口 */
-    {MODKEY | ControlMask,
-     XK_l,
-     movewin,
-     {.ui = RIGHT}}, /* super ctrl l       |  移动窗口 */
+    {MODKEY | ControlMask, XK_k, movewin, {.ui = UP}}, /* super ctrl k       |  移动窗口 */
+    {MODKEY | ControlMask, XK_j, movewin, {.ui = DOWN}}, /* super ctrl j       |  移动窗口 */
+    {MODKEY | ControlMask, XK_h, movewin, {.ui = LEFT}}, /* super ctrl h       |  移动窗口 */
+    {MODKEY | ControlMask, XK_l, movewin, {.ui = RIGHT}}, /* super ctrl l       |  移动窗口 */
 
-    {MODKEY | Mod1Mask,
-     XK_k,
-     resizewin,
-     {.ui = V_REDUCE}}, /* super alt k        |  调整窗口 */
-    {MODKEY | Mod1Mask,
-     XK_j,
-     resizewin,
-     {.ui = V_EXPAND}}, /* super alt j        |  调整窗口 */
-    {MODKEY | Mod1Mask,
-     XK_h,
-     resizewin,
-     {.ui = H_REDUCE}}, /* super alt h        |  调整窗口 */
-    {MODKEY | Mod1Mask,
-     XK_l,
-     resizewin,
-     {.ui = H_EXPAND}}, /* super alt l        |  调整窗口 */
+    {MODKEY | Mod1Mask, XK_k, resizewin, {.ui = V_REDUCE}}, /* super alt k        |  调整窗口 */
+    {MODKEY | Mod1Mask, XK_j, resizewin, {.ui = V_EXPAND}}, /* super alt j        |  调整窗口 */
+    {MODKEY | Mod1Mask, XK_h, resizewin, {.ui = H_REDUCE}}, /* super alt h        |  调整窗口 */
+    {MODKEY | Mod1Mask, XK_l, resizewin, {.ui = H_EXPAND}}, /* super alt l        |  调整窗口 */
 
     /* spawn + SHCMD 执行对应命令(已下部分建议完全自己重新定义) */
-    {MODKEY, XK_u, togglescratch,
-     SHCMD(
-         "st -t scratchpad -c float")}, /* super u          | 打开scratch终端 */
+    {MODKEY, XK_u, togglescratch, SHCMD("st -t scratchpad -c float")}, /* super u          | 打开scratch终端 */
     {MODKEY, XK_Return, spawn, SHCMD("st")}, /* super enter      | 打开st终端 */
-    {MODKEY, XK_g, spawn,
-     SHCMD("st -c global")}, /* super +          | 打开全局st终端         */
-    {MODKEY, XK_p, spawn,
-     SHCMD("st -c float")}, /* super space      | 打开浮动st终端         */
-    // { MODKEY,              XK_d,      spawn, SHCMD("~/scripts/call_rofi.sh
-    // run") },                             /* super d          | rofi: 执行run
-    // */ { MODKEY|ShiftMask,    XK_d,      spawn, SHCMD("~/scripts/call_rofi.sh
-    // drun") },                            /* super shift d    | rofi: 执行drun
-    // */ { MODKEY,              XK_p,      spawn, SHCMD("~/scripts/call_rofi.sh
-    // custom") },                          /* super p          | rofi:
-    // 执行自定义脚本   */
-    {MODKEY, XK_e, spawn,
-     SHCMD("thunar --class float")}, /* super e          | 文件管理器 */
+    {MODKEY, XK_g, spawn, SHCMD("st -c global")}, /* super +          | 打开全局st终端         */
+    {MODKEY, XK_p, spawn, SHCMD("st -c float")}, /* super space      | 打开浮动st终端         */
+    // { MODKEY,              XK_d,      spawn, SHCMD("~/scripts/call_rofi.sh run") },                             /* super d          | rofi: 执行run
+    // { MODKEY|ShiftMask,    XK_d,      spawn, SHCMD("~/scripts/call_rofi.sh // drun") },                            /* super shift d    | rofi: 执行drun
+    // { MODKEY,              XK_p,      spawn, SHCMD("~/scripts/call_rofi.sh // custom") },                          /* super p          | rofi: 执行自定义脚本
+    {MODKEY, XK_e, spawn, SHCMD("thunar --class float")}, /* super e          | 文件管理器 */
     // { MODKEY|ShiftMask,    XK_p,      spawn, SHCMD("~/scripts/call_rofi.sh
     // window") },                          /* super shift p    | rofi:
-    // 执行window       */ { MODKEY,              XK_k,      spawn,
-    // SHCMD("~/scripts/blurlock.sh") },                                  /*
-    // super k          | 锁定屏幕               */ { MODKEY|ShiftMask, XK_Up,
-    // spawn, SHCMD("~/scripts/set_vol.sh up") }, /* super shift up   | 音量加
-    // */ { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD("~/scripts/set_vol.sh
-    // down") },                              /* super shift down | 音量减 */
-    {ControlMask | Mod1Mask, XK_a, spawn,
-     SHCMD("flameshot gui")}, /* super shift a    | 截图                   */
-    // { MODKEY|ShiftMask,    XK_k,      spawn, SHCMD("~/scripts/screenkey.sh")
-    // },                                 /* super shift k    | 打开键盘输入显示
-    // */
-    {MODKEY, XK_Escape, spawn,
-     SHCMD("kill -9 $(xprop | grep _NET_WM_PID | awk '{print $3}')")}, /* super
-                                                                          shift
-                                                                          q    |
-                                                                          选中某个窗口并强制kill
-                                                                        */
-    {ShiftMask | ControlMask, XK_c, spawn,
-     SHCMD("xclip -o | xclip -selection c")}, /* super shift c    | 进阶复制 */
-    {MODKEY, XK_w, spawn,
-     SHCMD("microsoft-edge-stable")}, /* super w          | Edge浏览器 */
-    {Mod1Mask, XK_space, spawn,
-     SHCMD("rofi -show drun")}, /* super space      | Rofi               */
-    {MODKEY | ShiftMask, XK_q, spawn,
-     SHCMD("killall startdwm")}, /* super shift q    | kill dwm               */
-    {0, 0x1008ff02, spawn,
-     SHCMD("xbacklight -inc 1")}, /* super shift q    | kill dwm */
-    {0, 0x1008ff03, spawn,
-     SHCMD("xbacklight -dec 1")}, /* super shift q    | kill dwm */
-    {ControlMask | MODKEY | Mod1Mask, XK_l, spawn,
-     SHCMD("i3lock-fancy-multimonitor -p")},
-    {0, 0x1008ff13, spawn,
-    SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +1%")},
-    {0, 0x1008ff11, spawn,
-    SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -1%")},
-    {0, 0x1008ff12, spawn,
-    SHCMD("pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle")},
+    // 执行window       
+    // { MODKEY,              XK_k,      spawn, // SHCMD("~/scripts/blurlock.sh") },                                  [> super k          | 锁定屏幕
+    // */ { MODKEY|ShiftMask, XK_Up, // spawn, SHCMD("~/scripts/set_vol.sh up") }, /* super shift up   | 音量加 */ { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD("~/scripts/set_vol.sh // down") },                              /* super shift down | 音量减 */
+    {ControlMask | Mod1Mask, XK_a, spawn, SHCMD("maim -s | xclip -selection clipboard -t image/png")}, /* super shift a    | 截图                   */
+    // { modkey|shiftmask,    xk_k,      spawn, shcmd("~/scripts/screenkey.sh") },                                 /* super shift k    | 打开键盘输入显示 */
+    {MODKEY, XK_Escape, spawn, SHCMD("kill -9 $(xprop | grep _NET_WM_PID | awk '{print $3}')")}, /* super shift q    | 选中某个窗口并强制kill */
+    {ShiftMask | ControlMask, XK_c, spawn, SHCMD("xclip -o | xclip -selection c")}, /* super shift c    | 进阶复制 */
+    {MODKEY, XK_w, spawn, SHCMD("microsoft-edge-stable")}, /* super w          | Edge浏览器 */
+    {Mod1Mask, XK_space, spawn, SHCMD("rofi -show drun")}, /* super space      | Rofi               */
+    {MODKEY | ShiftMask, XK_q, spawn, SHCMD("killall startdwm")}, /* super shift q    | kill dwm               */
+    {0, 0x1008ff02, spawn, SHCMD("xbacklight -inc 1")}, /* super shift q    | kill dwm */
+    {0, 0x1008ff03, spawn, SHCMD("xbacklight -dec 1")}, /* super shift q    | kill dwm */
+    {ControlMask | MODKEY | Mod1Mask, XK_l, spawn, SHCMD("i3lock-fancy-multimonitor -p")},
+    {0, 0x1008ff13, spawn, SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +1%")},
+    {0, 0x1008ff11, spawn, SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -1%")},
+    {0, 0x1008ff12, spawn, SHCMD("pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle")},
 
     /* super key : 跳转到对应tag (可附加一条命令 若目标目录无窗口，则执行该命令)
      */
