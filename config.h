@@ -65,7 +65,7 @@ static const char scratchpadname[] = "scratchpad";
 // 10:l static const char *tags[] = { "", "", "", "", "", "",
 // "", "", "", "" };
 static const char *tags[] = {"一", "二", "三", "四", "五",
-                             "六", "七", "八", "九", "code"};
+                             "六", "七", "八", "九", "Code"};
 // static const char *tags[] = { "", "", "", "", "", "",
 // "", "", "ﬄ", "﬐", "" };
 static const Rule rules[] = {
