@@ -314,6 +314,12 @@ static Key keys[] = {
      SHCMD("xbacklight -dec 1")}, /* super shift q    | kill dwm */
     {ControlMask | MODKEY | Mod1Mask, XK_l, spawn,
      SHCMD("i3lock-fancy-multimonitor -p")},
+    {0, 0x1008ff13, spawn,
+    SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +1%")},
+    {0, 0x1008ff11, spawn,
+    SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -1%")},
+    {0, 0x1008ff12, spawn,
+    SHCMD("pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle")},
 
     /* super key : 跳转到对应tag (可附加一条命令 若目标目录无窗口，则执行该命令)
      */
