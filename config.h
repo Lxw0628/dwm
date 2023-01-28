@@ -15,8 +15,8 @@ static const int _gappi =
     12; /* 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
 static const int vertpad = 0;        /* vertical padding of bar */
 static const int sidepad = 0;        /* horizontal padding of bar */
-static const int overviewgappi = 24; /* overview时 窗口与边缘 缝隙大小 */
 static const int overviewgappo = 60; /* overview时 窗口与窗口 缝隙大小 */
+static const int overviewgappi = 24; /* overview时 窗口与边缘 缝隙大小 */
 static const int showbar = 1;        /* 是否显示状态栏 */
 static const int topbar = 1;         /* 指定状态栏位置 0底部 1顶部 */
 static const float mfact = 0.6;      /* 主工作区 大小比例 */
@@ -65,7 +65,7 @@ static const char scratchpadname[] = "scratchpad";
 // 10:l static const char *tags[] = { "", "", "", "", "", "",
 // "", "", "", "" };
 static const char *tags[] = {"一", "二", "三", "四", "五",
-                             "六", "七", "八", "九", "零"};
+                             "六", "七", "八", "九", "code"};
 // static const char *tags[] = { "", "", "", "", "", "",
 // "", "", "ﬄ", "﬐", "" };
 static const Rule rules[] = {
