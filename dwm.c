@@ -1374,12 +1374,12 @@ focusstack(const Arg *arg)
         return;
 
     // 判断是否有浮动窗口
-    for (c = selmon->clients; c && !hasfloating; c = c->next)
-        if (ISVISIBLE(c) && !HIDDEN(c) && c->isfloating)
-            hasfloating = 1;
+    /* for (c = selmon->clients; c && !hasfloating; c = c->next) */
+        /* if (ISVISIBLE(c) && !HIDDEN(c) && c->isfloating) */
+            /* hasfloating = 1; */
 
     for (c = selmon->clients; c; c = c->next) {
-        if (hasfloating != c->isfloating) continue; // 如果有浮动窗口，只在浮动窗口中切换
+        /* if (hasfloating != c->isfloating) continue; // 如果有浮动窗口，只在浮动窗口中切换 */
 
         if (ISVISIBLE(c) && (issingle || !HIDDEN(c))) {
             last ++;
