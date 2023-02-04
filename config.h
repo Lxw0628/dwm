@@ -182,7 +182,8 @@ static Key keys[] = {
     // 执行window       
     // { MODKEY,              XK_k,      spawn, // SHCMD("~/scripts/blurlock.sh") },                                  [> super k          | 锁定屏幕
     // */ { MODKEY|ShiftMask, XK_Up, // spawn, SHCMD("~/scripts/set_vol.sh up") }, /* super shift up   | 音量加 */ { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD("~/scripts/set_vol.sh // down") },                              /* super shift down | 音量减 */
-    {ControlMask | Mod1Mask, XK_a, spawn, SHCMD("maim -s | xclip -selection clipboard -t image/png")}, /* super shift a    | 截图                   */
+    {ControlMask | Mod1Mask, XK_a, spawn, SHCMD("flameshot gui")}, /* super shift a    | 截图                   */
+    // {ControlMask | Mod1Mask, XK_a, spawn, SHCMD("maim -s | xclip -selection clipboard -t image/png")}, /* super shift a    | 截图                   */
     // { modkey|shiftmask,    xk_k,      spawn, shcmd("~/scripts/screenkey.sh") },                                 /* super shift k    | 打开键盘输入显示 */
     {MODKEY, XK_Escape, spawn, SHCMD("kill -9 $(xprop | grep _NET_WM_PID | awk '{print $3}')")}, /* super shift q    | 选中某个窗口并强制kill */
     {ShiftMask | ControlMask, XK_c, spawn, SHCMD("xclip -o | xclip -selection c")}, /* super shift c    | 进阶复制 */
