@@ -201,9 +201,15 @@ static Key keys[] = {
      */
     /* super shift key : 将聚焦窗口移动到对应tag */
     /* key tag cmd */
-    TAGKEYS(XK_1, 0, 0) TAGKEYS(XK_2, 1, 0) TAGKEYS(XK_3, 2, 0)
-    TAGKEYS(XK_4, 3, 0) TAGKEYS(XK_5, 4, 0) TAGKEYS(XK_6, 5, 0)
-    TAGKEYS(XK_7, 6, 0) TAGKEYS(XK_8, 7, 0) TAGKEYS(XK_9, 8, 0)
+    TAGKEYS(XK_1, 0, 0)
+    TAGKEYS(XK_2, 1, 0)
+    TAGKEYS(XK_3, 2, 0)
+    TAGKEYS(XK_4, 3, 0)
+    TAGKEYS(XK_5, 4, 0)
+    TAGKEYS(XK_6, 5, 0)
+    TAGKEYS(XK_7, 6, 0)
+    TAGKEYS(XK_8, 7, 0)
+    TAGKEYS(XK_9, 8, 0)
     TAGKEYS(XK_0, 9, 0)
     // TAGKEYS(XK_9, 5,  "obs")
     // TAGKEYS(XK_c, 6,  "google-chrome-stable")
