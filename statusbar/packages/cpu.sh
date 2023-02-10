@@ -4,9 +4,11 @@
 source ~/.zprofile
 
 this=_cpu
-icon_color="^c#3E206F^^b#6E51760x88^"
+# icon_color="^c#3E206F^^b#6E51760x88^"
 # text_color="^c#3E206F^^b#6E51760x99^"
-text_color="^c#3E206F^^b#6E51760x88^"
+# text_color="^c#3E206F^^b#6E51760x88^"
+icon_color="^c#FFFFFF^^b#3333330xc0^"
+text_color="^c#FFFFFF^^b#3333330xc0^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
