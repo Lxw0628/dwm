@@ -23,26 +23,26 @@ static const unsigned int baralpha = 0xc0;    /* 状态栏透明度 */
 static const unsigned int borderalpha = 0xdd; /* 边框透明度 */
 static const char *fonts[] = {"JetBrainsMono Nerd Font:style=medium:size=12", "monospace:size=12"};
 static const char *colors[][3] = { /* 颜色设置 ColFg, ColBg, ColBorder */
-    [SchemeNorm] = {"#bbbbbb", "#333333", "#444444"},
-    [SchemeSel] = {"#ffffff", "#37474F", "#42A5F5"},
+    [SchemeNorm]      = {"#bbbbbb", "#333333", "#444444"},
+    [SchemeSel]       = {"#ffffff", "#37474F", "#42A5F5"},
     [SchemeSelGlobal] = {"#ffffff", "#37474F", "#FFC0CB"},
-    [SchemeSystray] = {NULL, "#7799AA", NULL},
-    [SchemeHid] = {"#dddddd", NULL, NULL},
+    [SchemeSystray]   = { NULL, "#7799AA", NULL},
+    [SchemeHid]       = {"#dddddd", NULL, NULL},
     [SchemeUnderline] = {"#7799AA", NULL, NULL},
-    [SchemeNormTag] = {"#bbbbbb", "#333333", NULL},
-    [SchemeSelTag] = {"#eeeeee", "#333333", NULL},
+    [SchemeNormTag]   = {"#bbbbbb", "#333333", NULL},
+    [SchemeSelTag]    = {"#eeeeee", "#333333", NULL},
     // [SchemeBarEmpty] = { NULL, "#111111", NULL },
-    [SchemeBarEmpty] = {NULL, NULL, NULL},
+    [SchemeBarEmpty]  = { NULL, NULL, NULL},
 };
 static const unsigned int alphas[][3] = {
     /* 透明度设置 ColFg, ColBg, ColBorder */
-    [SchemeNorm] = {OPAQUE, baralpha, borderalpha},
-    [SchemeSel] = {OPAQUE, baralpha, borderalpha},
-    [SchemeSelGlobal] = {OPAQUE, baralpha, borderalpha},
-    [SchemeNormTag] = {OPAQUE, baralpha, borderalpha},
-    [SchemeSelTag] = {OPAQUE, baralpha, borderalpha},
+    [SchemeNorm]       = {OPAQUE, baralpha, borderalpha},
+    [SchemeSel]        = {OPAQUE, baralpha, borderalpha},
+    [SchemeSelGlobal]  = {OPAQUE, baralpha, borderalpha},
+    [SchemeNormTag]    = {OPAQUE, baralpha, borderalpha},
+    [SchemeSelTag]     = {OPAQUE, baralpha, borderalpha},
     // [SchemeBarEmpty] = { NULL, 0xa0a, NULL },
-    [SchemeBarEmpty] = {NULL, 0x00, NULL},
+    [SchemeBarEmpty]   = {NULL, 0x00, NULL},
     [SchemeStatusText] = {OPAQUE, 0x88, NULL},
 };
 
@@ -64,6 +64,10 @@ static const char *tags[] = {"一", "二", "三", "四", "五", "六", "七", "�
 static const Rule rules[] = {
     /* class                 instance              title             tags mask
        isfloating  isglobal    isnoborder monitor */
+    { NULL,                  NULL,                "图片查看器",      0,
+        1,          0,          0,        -1,      0}, // qq图片查看器        浮动
+    { NULL,                  NULL,                "图片查看",        0,
+        1,          0,          0,        -1,      0}, // 微信图片查看器      浮动
     // {"obs",                  NULL,                 NULL,             1 << 5,
     // 0,          0,          0,        -1 },
     // {"chrome",               NULL,                 NULL,             1 << 6,
@@ -83,12 +87,10 @@ static const Rule rules[] = {
     // "crx_",            0,            1,          0,          0,        -1 },
     // {"flameshot",            NULL,                 NULL,             0, 1, 0,
     // 0,        -1 },
-    {"wemeetapp", NULL, NULL, TAGMASK, 1, 1, 0,
-     -1}, // 腾讯会议在切换tag时有诡异bug导致退出 变成global来规避该问题
+    {"wemeetapp", NULL, NULL, TAGMASK, 1, 1, 0, -1}, // 腾讯会议在切换tag时有诡异bug导致退出 变成global来规避该问题
     {"float", NULL, NULL, 0, 1, 0, 0, -1},    // 特殊class client默认浮动
     {"noborder", NULL, NULL, 0, 1, 0, 1, -1}, // 特殊class client默认无边框
-    {"global", NULL, NULL, TAGMASK, 1, 1, 0,
-     -1}, // 特殊class client全局于所有tag
+    {"global", NULL, NULL, TAGMASK, 1, 1, 0, -1}, // 特殊class client全局于所有tag
 };
 static const char *overviewtag = "OVERVIEW";
 static const Layout overviewlayout = {"舘", overview};
@@ -176,7 +178,8 @@ static Key keys[] = {
     // { MODKEY,              XK_d,      spawn, SHCMD("~/scripts/call_rofi.sh run") },                             /* super d          | rofi: 执行run
     // { MODKEY|ShiftMask,    XK_d,      spawn, SHCMD("~/scripts/call_rofi.sh // drun") },                            /* super shift d    | rofi: 执行drun
     // { MODKEY,              XK_p,      spawn, SHCMD("~/scripts/call_rofi.sh // custom") },                          /* super p          | rofi: 执行自定义脚本
-    {MODKEY, XK_e, spawn, SHCMD("thunar --class float")}, /* super e          | 文件管理器 */
+    // {MODKEY, XK_e, spawn, SHCMD("thunar --class float")}, /* super e          | 文件管理器 */
+    {MODKEY, XK_e, spawn, SHCMD("thunar")}, /* super e          | 文件管理器 */
     // { MODKEY|ShiftMask,    XK_p,      spawn, SHCMD("~/scripts/call_rofi.sh
     // window") },                          /* super shift p    | rofi:
     // 执行window       

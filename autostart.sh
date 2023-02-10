@@ -25,6 +25,9 @@ $HOME/cfw/cfw &
 killall fcitx5
 fcitx5 &
 
+killall flameshot
+flameshot &
+
 killall picom 
 picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
