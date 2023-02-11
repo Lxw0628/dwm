@@ -32,8 +32,9 @@ static const char *colors[][3]            = { /* 颜色设置 ColFg, ColBg, ColB
     [SchemeUnderline] = {"#7799AA", NULL, NULL},
     [SchemeNormTag]   = {"#bbbbbb", "#333333", NULL},
     [SchemeSelTag]    = {"#eeeeee", "#333333", NULL},
-    [SchemeBarEmpty] = { NULL, "#111111", NULL },
+    /* [SchemeBarEmpty] = { NULL, "#111111", NULL }, */
     /* [SchemeBarEmpty]  = { NULL, NULL, NULL}, */
+    [SchemeBarEmpty] = { "#333333", "#333333", NULL },
 };
 static const unsigned int alphas[][3] = {
     /* 透明度设置 ColFg, ColBg, ColBorder */
@@ -43,7 +44,8 @@ static const unsigned int alphas[][3] = {
     [SchemeNormTag]    = {OPAQUE, baralpha, borderalpha},
     [SchemeSelTag]     = {OPAQUE, baralpha, borderalpha},
     // [SchemeBarEmpty] = { NULL, 0xa0a, NULL },
-    [SchemeBarEmpty]   = {NULL, 0x00, NULL},
+    /* [SchemeBarEmpty]   = {NULL, 0x00, NULL}, */
+    [SchemeBarEmpty]   = {OPAQUE, baralpha, NULL},
     [SchemeStatusText] = {OPAQUE, 0x88, NULL},
 };
 
