@@ -12,7 +12,7 @@ text_color="^c#FFFFFF^^b#3333330xc0^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
-    time_text="$(date '+%m/%d %H:%M')"
+    time_text="$(date '+%b%e 周%a %H:%M')"
     case "$(date '+%I')" in
         "01") time_icon="" ;;
         "02") time_icon="" ;;

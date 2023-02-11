@@ -20,10 +20,10 @@ click() {
 # 更新状态栏
 refresh() {
     # _icons=''; _wifi=''; _cpu=''; _mem=''; _date=''; _vol=''; _bat='';   # 重置所有模块的状态为空
-    _wifi=''; _cpu=''; _mem=''; _date=''; _vol=''; _bat='';  # 重置所有模块的状态为空
+    _wifi=''; _cpu=''; _mem=''; _vol=''; _bat=''; _date='';  # 重置所有模块的状态为空
     source $DWM/statusbar/temp                                           # 从 temp 文件中读取模块的状态
     # xsetroot -name "$_icons$_wifi$_cpu$_mem$_date$_vol$_bat"             # 更新状态栏
-    xsetroot -name "$_wifi$_cpu$_mem$_date$_vol$_bat"             # 更新状态栏
+    xsetroot -name "$_wifi$_cpu$_mem$_vol$_bat$_date"             # 更新状态栏
 }
 
 # 启动定时更新状态栏 不同的模块有不同的刷新周期 注意不要重复启动该func
@@ -49,6 +49,6 @@ case $1 in
     cron) cron ;;
     update) shift 1; update $* ;;
     # updateall|check) update icons wifi cpu mem date vol bat ;;
-    updateall|check) update wifi cpu mem date vol bat;;
+    updateall|check) update wifi cpu mem vol bat date;;
     *) click $1 $2 ;; # 接收clickstatusbar传递过来的信号 $1: 模块名  $2: 按键(L|M|R|U|D)
 esac
