@@ -16,7 +16,7 @@ static const int overviewgappi            = 24;     /* overview时 窗口与边�
 static const int overviewgappo            = 60;     /* overview时 窗口与窗口 缝隙大小 */
 static const int showbar                  = 1;      /* 是否显示状态栏 */
 static const int topbar                   = 1;      /* 指定状态栏位置 0底部 1顶部 */
-static const float mfact                  = 0.6;    /* 主工作区 大小比例 */
+static const float mfact                  = 0.5;    /* 主工作区 大小比例 */
 static const int nmaster                  = 1;      /* 主工作区 窗口数量 */
 static const unsigned int snap            = 10;     /* 边缘依附宽度 */
 static const unsigned int baralpha        = 0xc0;   /* 状态栏透明度 */
@@ -27,7 +27,7 @@ static const char *colors[][3]            = { /* 颜色设置 ColFg, ColBg, ColB
     [SchemeSel]       = {"#ffffff", "#37474F", "#42A5F5"},
     [SchemeSelGlobal] = {"#ffffff", "#37474F", "#FFC0CB"},
     [SchemeSystray]   = { NULL, "#7799AA", NULL},
-    /* [SchemeSystray]   = { NULL, "#333333", NULL}, */
+    /* [SchemeSystray]   = {NULL, "#333333", NULL}, */
     [SchemeHid]       = {"#dddddd", NULL, NULL},
     [SchemeUnderline] = {"#7799AA", NULL, NULL},
     [SchemeNormTag]   = {"#bbbbbb", "#333333", NULL},
@@ -47,6 +47,7 @@ static const unsigned int alphas[][3] = {
     /* [SchemeBarEmpty]   = {NULL, 0x00, NULL}, */
     [SchemeBarEmpty]   = {OPAQUE, baralpha, NULL},
     [SchemeStatusText] = {OPAQUE, 0x88, NULL},
+    /* [SchemeSystray]    = {OPAQUE, baralpha, borderalpha}, */
 };
 
 /* 自定义脚本位置 */

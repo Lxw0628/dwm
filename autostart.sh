@@ -33,7 +33,8 @@ picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
 # feh --bg-fill /run/media/lxw/数据/图片/电脑壁纸/code4k.png &
 killall feh
-feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
+# feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
+feh --bg-fill --randomize $HOME/Pictures/wallpapers2/* &
 
 killall xfce-polkit
 /usr/lib/xfce-polkit/xfce-polkit

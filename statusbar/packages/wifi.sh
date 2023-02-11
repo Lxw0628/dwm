@@ -28,7 +28,7 @@ notify() {
     device=$(nmcli | grep 已连接 | awk '{print $1}'  | sed 's/：已连接//')
     text="设备: $device\n连接: $connect"
     [ "$connect" = "" ] && text="未连接到网络"
-    notify-send -r 9527 "$wifi_icon Wifi" "\n$wifi_text"
+    notify-send -r 9527 "$wifi_icon Wifi" "\n$text"
 }
 
 call_nm() {

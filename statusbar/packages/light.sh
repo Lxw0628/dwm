@@ -21,6 +21,7 @@ update() {
 
 notify() {
     update
+    notify-send -r 9527 "$light_icon 亮度" "\n屏幕亮度：$text"
 }
 
 click() {
