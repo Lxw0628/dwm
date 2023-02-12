@@ -18,6 +18,7 @@ nm-applet &
 
 killall blueman-applet
 blueman-applet &
+bluetoothctl power off
 
 killall cfw
 $HOME/cfw/cfw &
