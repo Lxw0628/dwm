@@ -14,11 +14,10 @@ signal=$(echo "^s$this^" | sed 's/_//')
 update() {
     cpu_icon="閭"
     cpu_text=$(top -n 1 -b | sed -n '3p' | awk '{printf "%02d%", 100 - $8}')
-    temp_text=$(sensors | grep Tctl | awk '{printf "%d°C", $2}')  
-
+    temp_text=$(sensors coretemp-isa-0000 | head -3 | tail -1 | awk -F [+°C] '{print int($2)}')  
     icon=" $cpu_icon "
-    # text="$cpu_text $temp_text "
-    text="$cpu_text "
+    text="$cpu_text $temp_text°C "
+    # text="$cpu_text "
 
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
     printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp

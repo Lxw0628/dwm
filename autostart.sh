@@ -25,6 +25,9 @@ $HOME/cfw/cfw &
 killall fcitx5
 fcitx5 &
 
+killall udiskie
+udiskie &
+
 killall flameshot
 flameshot &
 
