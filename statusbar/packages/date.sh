@@ -10,6 +10,7 @@ this=_date
 icon_color="^c#FFFFFF^^b#3333330xc0^"
 text_color="^c#FFFFFF^^b#3333330xc0^"
 signal=$(echo "^s$this^" | sed 's/_//')
+time_icon=" "
 
 update() {
     time_text="$(date '+%b%e 周%a %H:%M')"
