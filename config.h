@@ -96,7 +96,7 @@ static const Rule rules[] = {
     // "crx_",            0,            1,          0,          0,        -1 },
     // {"flameshot",            NULL,                 NULL,             0, 1, 0,
     // 0,        -1 },
-    {"wemeetapp", NULL, NULL, TAGMASK, 1, 0, 0, -1}, // 腾讯会议在切换tag时有诡异bug导致退出 变成global来规避该问题
+    {"wemeetapp", NULL, NULL, TAGMASK, 1, 1, 0, -1}, // 腾讯会议在切换tag时有诡异bug导致退出 变成global来规避该问题
     {"float", NULL, NULL, 0, 1, 0, 0, -1},    // 特殊class client默认浮动
     {"noborder", NULL, NULL, 0, 1, 0, 1, -1}, // 特殊class client默认无边框
     {"global", NULL, NULL, TAGMASK, 1, 1, 0, -1}, // 特殊class client全局于所有tag
