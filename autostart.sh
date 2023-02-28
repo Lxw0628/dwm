@@ -1,46 +1,47 @@
 #! /usr/bin/sh
 
+killall xfce-polkit
+killall feh
+killall picom 
+killall flameshot
+killall udiskie
+killall fcitx5
+killall cfw
+killall blueman-applet
+killall nm-applet
+killall dunst
+
+source ~/.zprofile
+
 sh $DWM/statusbar/statusbar.sh cron
 
 # 通知服务器
 # /usr/lib/notification-daemon-1.0/notification-daemon &
 
 # 适用于DWM的极简主义通知守护程序
-killall dunst
 /usr/bin/dunst &
-
-source ~/.zprofile
 
 xset r rate 250 50
 
-killall nm-applet
 nm-applet &
 
-killall blueman-applet
 blueman-applet &
-bluetoothctl power off
+# bluetoothctl power off
 
-killall cfw
-$HOME/cfw/cfw &
+$HOME/.local/share/cfw/cfw &
 
-killall fcitx5
 fcitx5 &
 
-killall udiskie
 udiskie &
 
-killall flameshot
 flameshot &
 
-killall picom 
 picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
 # feh --bg-fill /run/media/lxw/数据/图片/电脑壁纸/code4k.png &
-killall feh
-# feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
-feh --bg-fill --randomize $HOME/Pictures/wallpapers2/* &
+feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
+# feh --bg-fill --randomize $HOME/Pictures/wallpapers2/* &
 
-killall xfce-polkit
 /usr/lib/xfce-polkit/xfce-polkit
 
 xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L

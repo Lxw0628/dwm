@@ -25,11 +25,11 @@ text_color="^c#FFFFFF^^b#3333330xc0^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
-    # sink=$(pactl info | grep 'Default Sink' | awk '{print $3}')
+    sink=$(pactl info | grep 'Default Sink' | awk '{print $3}')
     # volunmuted=$(pactl list sinks | grep $sink -A 6 | sed -n '7p' | grep 'Mute: no')
     volunmuted=$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')
-    # vol_text=$(pactl list sinks | grep $sink -A 7 | sed -n '8p' | awk '{printf int($5)}')
-    vol_text=$(amixer get Master | tail -1 | awk '{print $5}' | tr -d '[%]')
+    vol_text=$(pactl list sinks | grep $sink -A 7 | sed -n '8p' | awk '{printf int($5)}')
+    # vol_text=$(amixer get Master | tail -1 | awk '{print $5}' | tr -d '[%]')
     if [ "$volunmuted" = "off" ]; then vol_text="--"; vol_icon="ﱝ";
     elif [ "$vol_text" -eq 0 ]; then vol_text="00"; vol_icon="婢";
     elif [ "$vol_text" -lt 10 ]; then vol_icon="奔"; vol_text=0$vol_text;
