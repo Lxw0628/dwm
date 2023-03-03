@@ -13,8 +13,6 @@ killall dunst
 
 source ~/.zprofile
 
-xrandr --output HDMI-2 --mode 1920x1080 --rate 120.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-2
-
 sh $DWM/statusbar/statusbar.sh cron
 
 # 通知服务器
