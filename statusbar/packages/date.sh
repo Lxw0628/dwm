@@ -10,7 +10,7 @@ signal=$(echo "^s$this^" | sed 's/_//')
 time_icon=" "
 
 update() {
-    time_text="$(date '+%b%-d日 周%a %H:%M')"
+    time_text="$(date '+%b%-d日|周%a|%H:%M')"
     case "$(date '+%I')" in
         "01") time_icon="" ;;
         "02") time_icon="" ;;
