@@ -17,11 +17,8 @@
 source ~/.zprofile
 
 this=_vol
-# icon_color="^c#442266^^b#7879560x88^"
-# text_color="^c#442266^^b#7879560x99^"
-# text_color="^c#442266^^b#7879560x88^"
-icon_color="^c#FFFFFF^^b#3333330xc0^"
-text_color="^c#FFFFFF^^b#3333330xc0^"
+icon_color="^c#FFFFFF^^b#333333^"
+text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {

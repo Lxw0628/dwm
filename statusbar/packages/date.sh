@@ -4,11 +4,8 @@
 source ~/.zprofile
 
 this=_date
-# icon_color="^c#4B005B^^b#7E51680x88^"
-# text_color="^c#4B005B^^b#7E51680x99^"
-# text_color="^c#4B005B^^b#7E51680x88^"
-icon_color="^c#FFFFFF^^b#3333330xc0^"
-text_color="^c#FFFFFF^^b#3333330xc0^"
+icon_color="^c#FFFFFF^^b#333333^"
+text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 time_icon=" "
 

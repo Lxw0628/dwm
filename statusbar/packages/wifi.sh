@@ -6,8 +6,8 @@ this=_wifi
 # icon_color="^c#000080^^b#3870560x88^"
 # text_color="^c#000080^^b#3870560x99^"
 # text_color="^c#000080^^b#3870560x88^"
-icon_color="^c#FFFFFF^^b#3333330xc0^"
-text_color="^c#FFFFFF^^b#3333330xc0^"
+icon_color="^c#FFFFFF^^b#333333^"
+text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {

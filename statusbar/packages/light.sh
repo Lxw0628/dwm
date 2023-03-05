@@ -4,8 +4,8 @@
 source ~/.zprofile
 
 this=_light
-icon_color="^c#FFFFFF^^b#3333330xc0^"
-text_color="^c#FFFFFF^^b#3333330xc0^"
+icon_color="^c#FFFFFF^^b#333333^"
+text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {

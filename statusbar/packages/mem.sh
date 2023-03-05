@@ -4,11 +4,8 @@
 source ~/.zprofile
 
 this=_mem
-# icon_color="^c#3B001B^^b#6873790x88^"
-# text_color="^c#3B001B^^b#6873790x99^"
-# text_color="^c#3B001B^^b#6873790x88^"
-icon_color="^c#FFFFFF^^b#3333330xc0^"
-text_color="^c#FFFFFF^^b#3333330xc0^"
+icon_color="^c#FFFFFF^^b#333333^"
+text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {

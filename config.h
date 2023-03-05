@@ -1,22 +1,24 @@
 #include <X11/XF86keysym.h>
 
-static int showsystray                    = 0;      /* 是否显示托盘栏 */
+static int showsystray                    = 1;      /* 是否显示托盘栏 */
 static const int newclientathead          = 0;      /* 定义新窗口在栈顶还是栈底 */
 static const unsigned int borderpx        = 2;      /* 窗口边框大小 */
 static const unsigned int systraypinning  = 0;      /* 托盘跟随的显示器 0代表不指定显示器 */
-static const unsigned int systrayspacing  = 1;      /* 托盘间距 */
-static const unsigned int systrayspadding = 5;      /* 托盘和状态栏的间隙 */
-// static const unsigned int systrayspadding = 0;      /* 托盘和状态栏的间隙 */
-static int gappi                          = 10;     /* 窗口与窗口 缝隙大小 */
-static int gappo                          = 10;     /* 窗口与边缘 缝隙大小 */
-// static int gappo                          = 0;     /* 窗口与边缘 缝隙大小 */
-static const int _gappi                   = 10;     /* 窗口与窗口 缝隙大小 不可变 用于恢复时的默认值 */
-static const int _gappo                   = 10;     /* 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
-// static const int _gappo                   = 0;     /* 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
-static const int vertpad                  = 10;      /* vertical padding of bar */
-static const int sidepad                  = 10;      /* horizontal padding of bar */
-// static const int vertpad                  = 0;      /* vertical padding of bar */
-// static const int sidepad                  = 0;      /* horizontal padding of bar */
+static const unsigned int systrayspacing  = 0;      /* 托盘间距 */
+// static const unsigned int systrayspadding = 5;      /* 托盘和状态栏的间隙 */
+static const unsigned int systrayspadding = 0;      /* 托盘和状态栏的间隙 */
+// static int gappi                          = 10;     /* 窗口与窗口 缝隙大小 */
+// static int gappo                          = 10;     /* 窗口与边缘 缝隙大小 */
+static int gappi                          = 0;     /* 窗口与窗口 缝隙大小 */
+static int gappo                          = 0;     /* 窗口与边缘 缝隙大小 */
+// static const int _gappi                   = 10;     /* 窗口与窗口 缝隙大小 不可变 用于恢复时的默认值 */
+// static const int _gappo                   = 10;     /* 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
+static const int _gappi                   = 0;     /* 窗口与窗口 缝隙大小 不可变 用于恢复时的默认值 */
+static const int _gappo                   = 0;     /* 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
+// static const int vertpad                  = 10;      /* vertical padding of bar */
+// static const int sidepad                  = 10;      /* horizontal padding of bar */
+static const int vertpad                  = 0;      /* vertical padding of bar */
+static const int sidepad                  = 0;      /* horizontal padding of bar */
 static const int overviewgappi            = 24;     /* overview时 窗口与边缘 缝隙大小 */
 static const int overviewgappo            = 60;     /* overview时 窗口与窗口 缝隙大小 */
 static const int showbar                  = 1;      /* 是否显示状态栏 */
@@ -27,32 +29,31 @@ static const unsigned int snap            = 10;     /* 边缘依附宽度 */
 static const unsigned int baralpha        = 0xc0;   /* 状态栏透明度 */
 static const unsigned int borderalpha     = 0xdd;   /* 边框透明度 */
 static const char *fonts[]                = {"JetBrainsMono Nerd Font:style=medium:size=12", "monospace:size=12"};
-static const char *colors[][3]            = { /* 颜色设置 ColFg, ColBg, ColBorder */
-    [SchemeNorm]      = {"#bbbbbb", "#333333", "#444444"},
-    [SchemeSel]       = {"#ffffff", "#37474F", "#42A5F5"},
-    [SchemeSelGlobal] = {"#ffffff", "#37474F", "#FFC0CB"},
-    /* [SchemeSystray]   = { NULL, "#7799AA", NULL}, */
-    [SchemeSystray]   = {"#bbbbbb", "#333333", "#444444"},
-    [SchemeHid]       = {"#dddddd", NULL, NULL},
-    [SchemeUnderline] = {"#7799AA", NULL, NULL},
+static const char *colors[][3]            = { 
+    /* 颜色设置 ColFg, ColBg, ColBorder */
+    [SchemeNorm]      = {"#bbbbbb", "#333333", NULL},
     [SchemeNormTag]   = {"#bbbbbb", "#333333", NULL},
-    [SchemeSelTag]    = {"#eeeeee", "#333333", NULL},
-    /* [SchemeBarEmpty] = { NULL, "#111111", NULL }, */
-    /* [SchemeBarEmpty]  = { NULL, NULL, NULL}, */
-    [SchemeBarEmpty] = { "#333333", "#333333", NULL },
+    [SchemeSystray]   = {"#bbbbbb", "#333333", NULL },
+    [SchemeBarEmpty]  = {"#bbbbbb", "#333333", NULL },
+    [SchemeSel]       = {"#bbbbbb", "#333333", "#42A5F5"},
+    [SchemeSelGlobal] = {"#bbbbbb", "#333333", "#FFC0CB"},
+    [SchemeSelTag]    = {"#bbbbbb", "#333333", NULL},
+    [SchemeHid]       = {"#bbbbbb", NULL, NULL},
+    [SchemeUnderline] = {"#7799AA", NULL, NULL},
 };
 static const unsigned int alphas[][3] = {
     /* 透明度设置 ColFg, ColBg, ColBorder */
-    [SchemeNorm]       = {OPAQUE, baralpha, borderalpha},
-    [SchemeSel]        = {OPAQUE, baralpha, borderalpha},
-    [SchemeSelGlobal]  = {OPAQUE, baralpha, borderalpha},
-    [SchemeNormTag]    = {OPAQUE, baralpha, borderalpha},
-    [SchemeSelTag]     = {OPAQUE, baralpha, borderalpha},
-    // [SchemeBarEmpty] = { NULL, 0xa0a, NULL },
-    /* [SchemeBarEmpty]   = {NULL, 0x00, NULL}, */
-    [SchemeBarEmpty]   = {OPAQUE, baralpha, NULL},
-    [SchemeStatusText] = {OPAQUE, 0x88, NULL},
-    [SchemeSystray]    = {OPAQUE, baralpha, borderalpha},
+    [SchemeNorm]       = {OPAQUE, OPAQUE, borderalpha},
+    [SchemeNormTag]    = {OPAQUE, OPAQUE, borderalpha},
+    [SchemeSystray]    = {OPAQUE, OPAQUE, borderalpha},
+    /* [SchemeBarEmpty]   = {OPAQUE, baralpha, borderalpha}, */
+    [SchemeBarEmpty]   = {OPAQUE, OPAQUE, borderalpha},
+    [SchemeSel]        = {OPAQUE, OPAQUE, borderalpha},
+    [SchemeSelTag]     = {OPAQUE, OPAQUE, borderalpha},
+    [SchemeSelGlobal]  = {OPAQUE, OPAQUE, borderalpha},
+    /* [SchemeStatusText] = {OPAQUE, 0x88, NULL}, */
+    [SchemeStatusText] = {OPAQUE, OPAQUE, NULL},
+    /* [SchemeStatusText] = {OPAQUE, baralpha, NULL}, */
 };
 
 /* 自定义脚本位置 */
