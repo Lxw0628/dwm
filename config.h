@@ -77,6 +77,10 @@ static const Rule rules[] = {
         1,          0,          0,        -1,      0}, // qq图片查看器        浮动
     { NULL,                  NULL,                "图片查看",        0,
         1,          0,          0,        -1,      0}, // 微信图片查看器      浮动
+    { "QQ",                  NULL,                NULL,              0,
+        1,          0,          0,        -1,      0}, // QQ                  浮动
+    { NULL,                  NULL,                "微信",            0,
+        1,          0,          0,        -1,      0}, // wechat              浮动
     // {"obs",                  NULL,                 NULL,             1 << 5,
     // 0,          0,          0,        -1 },
     // {"chrome",               NULL,                 NULL,             1 << 6,
@@ -220,6 +224,7 @@ static Key keys[] = {
     {0, 0x1008ff13, spawn, SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +1%")},
     {0, 0x1008ff11, spawn, SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -1%")},
     {0, 0x1008ff12, spawn, SHCMD("pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle")},
+    {Mod1Mask | ControlMask, XK_z, spawn, SHCMD("/opt/apps/com.qq.weixin.deepin/files/run.sh -w")},
 
     /* super key : 跳转到对应tag (可附加一条命令 若目标目录无窗口，则执行该命令)
      */
