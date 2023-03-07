@@ -38,7 +38,7 @@ static const char *colors[][3]            = {
     [SchemeSel]       = {"#bbbbbb", "#333333", "#42A5F5"},
     [SchemeSelGlobal] = {"#bbbbbb", "#333333", "#FFC0CB"},
     [SchemeSelTag]    = {"#bbbbbb", "#333333", NULL},
-    [SchemeHid]       = {"#bbbbbb", NULL, NULL},
+    [SchemeHid]       = {"#bbbbbb", "#555555", NULL},
     [SchemeUnderline] = {"#7799AA", NULL, NULL},
 };
 static const unsigned int alphas[][3] = {
@@ -78,10 +78,10 @@ static const Rule rules[] = {
         1,          0,          0,        -1,      0}, // qq图片查看器        浮动
     { NULL,                  NULL,                "图片查看",        0,
         1,          0,          0,        -1,      0}, // 微信图片查看器      浮动
-    { "QQ",                  NULL,                NULL,              0,
-        1,          0,          0,        -1,      0}, // QQ                  浮动
-    { NULL,                  NULL,                "微信",            0,
-        1,          0,          0,        -1,      0}, // wechat              浮动
+    /* { "QQ",                  NULL,                NULL,              0, */
+    /*     1,          0,          0,        -1,      0}, // QQ                  浮动 */
+    /* { NULL,                  NULL,                "微信",            0, */
+    /*     1,          0,          0,        -1,      0}, // wechat              浮动 */
     // {"obs",                  NULL,                 NULL,             1 << 5,
     // 0,          0,          0,        -1 },
     // {"chrome",               NULL,                 NULL,             1 << 6,
