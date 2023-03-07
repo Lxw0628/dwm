@@ -221,13 +221,13 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_q, spawn, SHCMD("killall startdwm")}, /* super shift q    | kill dwm               */
     {0, 0x1008ff02, spawn, SHCMD("xbacklight -inc 1")}, /* super shift q    | kill dwm */
     {0, 0x1008ff03, spawn, SHCMD("xbacklight -dec 1")}, /* super shift q    | kill dwm */
-    {ControlMask | MODKEY | Mod1Mask, XK_l, spawn, SHCMD("i3lock-fancy-multimonitor -p")},
     {0, 0x1008ff13, spawn, SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +1%")},
     {0, 0x1008ff11, spawn, SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -1%")},
     {0, 0x1008ff12, spawn, SHCMD("pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle")},
     {Mod1Mask | ControlMask, XK_z, spawn, SHCMD("/opt/apps/com.qq.weixin.deepin/files/run.sh -w")},
     {MODKEY , XK_m, spawn, SHCMD("feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &")},
     {MODKEY | ShiftMask , XK_m, spawn, SHCMD("$HOME/Scripts/DynamicWallpapers/wallpaper-wrap.sh")},
+    {ControlMask | Mod1Mask , XK_l, spawn, SHCMD("slock")},
 
     /* super key : 跳转到对应tag (可附加一条命令 若目标目录无窗口，则执行该命令)
      */
