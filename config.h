@@ -1,36 +1,36 @@
 #include <X11/XF86keysym.h>
 
-static int showsystray                    = 1;      /* 是否显示托盘栏 */
-static const int newclientathead          = 0;      /* 定义新窗口在栈顶还是栈底 */
-static const unsigned int borderpx        = 2;      /* 窗口边框大小 */
-static const unsigned int systraypinning  = 0;      /* 托盘跟随的显示器 0代表不指定显示器 */
-static const unsigned int systrayspacing  = 0;      /* 托盘间距 */
-// static const unsigned int systrayspadding = 5;      /* 托盘和状态栏的间隙 */
-static const unsigned int systrayspadding = 0;      /* 托盘和状态栏的间隙 */
-// static int gappi                          = 10;     /* 窗口与窗口 缝隙大小 */
-// static int gappo                          = 10;     /* 窗口与边缘 缝隙大小 */
-static int gappi                          = 0;     /* 窗口与窗口 缝隙大小 */
-static int gappo                          = 0;     /* 窗口与边缘 缝隙大小 */
-// static const int _gappi                   = 10;     /* 窗口与窗口 缝隙大小 不可变 用于恢复时的默认值 */
-// static const int _gappo                   = 10;     /* 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
-static const int _gappi                   = 0;     /* 窗口与窗口 缝隙大小 不可变 用于恢复时的默认值 */
-static const int _gappo                   = 0;     /* 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
-// static const int vertpad                  = 10;      /* vertical padding of bar */
-// static const int sidepad                  = 10;      /* horizontal padding of bar */
-static const int vertpad                  = 0;      /* vertical padding of bar */
-static const int sidepad                  = 0;      /* horizontal padding of bar */
-static const int overviewgappi            = 24;     /* overview时 窗口与边缘 缝隙大小 */
-static const int overviewgappo            = 60;     /* overview时 窗口与窗口 缝隙大小 */
-static const int showbar                  = 1;      /* 是否显示状态栏 */
-static const int topbar                   = 1;      /* 指定状态栏位置 0底部 1顶部 */
-static const float mfact                  = 0.5;    /* 主工作区 大小比例 */
-static const int nmaster                  = 1;      /* 主工作区 窗口数量 */
-static const unsigned int snap            = 10;     /* 边缘依附宽度 */
-static const unsigned int baralpha        = 0xc0;   /* 状态栏透明度 */
-static const unsigned int borderalpha     = 0xdd;   /* 边框透明度 */
+static int showsystray                    = 1;      // 是否显示托盘栏
+static const int newclientathead          = 0;      // 定义新窗口在栈顶还是栈底
+static const unsigned int borderpx        = 2;      // 窗口边框大小
+static const unsigned int systraypinning  = 0;      // 托盘跟随的显示器 0代表不指定显示器
+static const unsigned int systrayspacing  = 0;      // 托盘间距
+/* static const unsigned int systrayspadding = 5;      // 托盘和状态栏的间隙 */
+static const unsigned int systrayspadding = 0;      // 托盘和状态栏的间隙
+/* static int gappi                          = 10;     // 窗口与窗口 缝隙大小 */
+/* static int gappo                          = 10;     // 窗口与边缘 缝隙大小 */
+static int gappi                          = 0;      // 窗口与窗口 缝隙大小
+static int gappo                          = 0;      // 窗口与边缘 缝隙大小
+/* static const int _gappi                   = 10;     // 窗口与窗口 缝隙大小 不可变 用于恢复时的默认值 */
+/* static const int _gappo                   = 10;     // 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
+static const int _gappi                   = 0;      // 窗口与窗口 缝隙大小 不可变 用于恢复时的默认值
+static const int _gappo                   = 0;      // 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值
+/* static const int vertpad                  = 10;     // vertical padding of bar */
+/* static const int sidepad                  = 10;     // horizontal padding of bar */
+static const int vertpad                  = 0;      // vertical padding of bar
+static const int sidepad                  = 0;      // horizontal padding of bar
+static const int overviewgappi            = 24;     // overview时 窗口与边缘 缝隙大小
+static const int overviewgappo            = 60;     // overview时 窗口与窗口 缝隙大小
+static const int showbar                  = 1;      // 是否显示状态栏
+static const int topbar                   = 1;      // 指定状态栏位置 0底部 1顶部
+static const float mfact                  = 0.5;    // 主工作区 大小比例
+static const int nmaster                  = 1;      // 主工作区 窗口数量 
+static const unsigned int snap            = 10;     // 边缘依附宽度
+static const unsigned int baralpha        = 0xc0;   // 状态栏透明度
+static const unsigned int borderalpha     = 0xdd;   // 边框透明度
 static const char *fonts[]                = {"JetBrainsMono Nerd Font:style=medium:size=12", "monospace:size=12"};
 static const char *colors[][3]            = { 
-    /* 颜色设置 ColFg, ColBg, ColBorder */
+    /* 颜色设置           ColFg,     ColBg,    ColBorder */
     [SchemeNorm]      = {"#bbbbbb", "#333333", NULL},
     [SchemeNormTag]   = {"#bbbbbb", "#333333", NULL},
     [SchemeSystray]   = {"#bbbbbb", "#333333", NULL },
@@ -39,10 +39,10 @@ static const char *colors[][3]            = {
     [SchemeSelGlobal] = {"#bbbbbb", "#333333", "#FFC0CB"},
     [SchemeSelTag]    = {"#bbbbbb", "#333333", NULL},
     [SchemeHid]       = {"#bbbbbb", "#555555", NULL},
-    [SchemeUnderline] = {"#7799AA", NULL, NULL},
+    [SchemeUnderline] = {"#7799AA", NULL,      NULL},
 };
 static const unsigned int alphas[][3] = {
-    /* 透明度设置 ColFg, ColBg, ColBorder */
+    /* 透明度设置         ColFg,  ColBg,  ColBorder */
     [SchemeNorm]       = {OPAQUE, OPAQUE, borderalpha},
     [SchemeNormTag]    = {OPAQUE, OPAQUE, borderalpha},
     [SchemeSystray]    = {OPAQUE, OPAQUE, borderalpha},
@@ -65,22 +65,20 @@ static const char scratchpadname[] = "scratchpad";
 
 /* 自定义tag名称 */
 /* 自定义特定实例的显示状态 */
-//            ﮸  ﭮ 切
-// 对应的tag序号以及快捷键:   0:1  1:2  2:3  3:4  4:5  5:9  6:c  7:m  8:0  9:w
-// 10:l static const char *tags[] = { "", "", "", "", "", "",
-// "", "", "", "" };
+/*            ﮸  ﭮ 切 */
+/* static const char *tags[] = { "", "", "", "", "", "", "", "", "", "" }; */
+/* static const char *tags[] = { "", "", "", "", "", "", "", "", "ﬄ", "﬐", "" }; */
 static const char *tags[] = {"一", "二", "三", "四", "五", "六", "七", "八", "九", "零"};
-// static const char *tags[] = { "", "", "", "", "", "", "", "", "ﬄ", "﬐", "" };
 static const Rule rules[] = {
     /* class       instance  title         tags mask    isfloating  isglobal    isnoborder  monitor */
-    { NULL,        NULL,     "图片查看器", 0,           1,          0,          0,          -1},                           // qq图片查看器    浮动
-    { NULL,        NULL,     "图片查看",   0,           1,          0,          0,          -1},                           // 微信图片查看器  浮动
-    { "wemeetapp", NULL,     NULL,         TAGMASK,     1,          1,          0,          -1},                                   // 腾讯会议在切换tag时有诡异bug导致退出 变成global来规避该问题
-    { "float",     NULL,     NULL,         0,           1,          0,          0,          -1},                                   // 特殊class client默认浮动
-    { "noborder",  NULL,     NULL,         0,           1,          0,          1,          -1},                                   // 特殊class client默认无边框
-    { "global",    NULL,     NULL,         TAGMASK,     1,          1,          0,          -1},                                   // 特殊class client全局于所有tag
+    { NULL,        NULL,     "图片查看器", 0,           1,          0,          0,          -1},    // qq图片查看器 浮动
+    { NULL,        NULL,     "图片查看",   0,           1,          0,          0,          -1},    // 微信图片查看器 浮动
+    { "wemeetapp", NULL,     NULL,         TAGMASK,     1,          1,          0,          -1},    // 腾讯会议在切换tag时有诡异bug导致退出 变成global来规避该问题
+    { "float",     NULL,     NULL,         0,           1,          0,          0,          -1},    // 特殊class client默认浮动
+    { "noborder",  NULL,     NULL,         0,           1,          0,          1,          -1},    // 特殊class client默认无边框
+    { "global",    NULL,     NULL,         TAGMASK,     1,          1,          0,          -1},    // 特殊class client全局于所有tag
 };
-static const char *overviewtag = "OVERVIEW";
+static const char *overviewtag     = "OVERVIEW";
 static const Layout overviewlayout = {"舘", overview};
 
 /* 自定义布局 */
@@ -89,15 +87,15 @@ static const Layout layouts[] = {
     {"﩯", magicgrid}, /* 网格 */
 };
 
-#define SHCMD(cmd)                                                             \
-  {                                                                            \
-    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
-  }
+#define SHCMD(cmd)                                                       \
+    {                                                                    \
+      .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }               \
+    }
 #define MODKEY Mod4Mask
-#define TAGKEYS(KEY, TAG, cmd)                                                 \
-  {MODKEY, KEY, view, {.ui = 1 << TAG, .v = cmd}},                             \
-  {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                            \
-  {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},
+#define TAGKEYS(KEY, TAG, cmd)                                           \
+    {MODKEY,               KEY, view,       {.ui = 1 << TAG, .v = cmd}}, \
+    {MODKEY | ShiftMask,   KEY, tag,        {.ui = 1 << TAG}},           \
+    {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},
 
 static Key keys[] = {
     /* modifier                       key         function           argument */
@@ -216,6 +214,6 @@ static Button buttons[] = {
     {ClkStatusText,        0,          Button4,  clickstatusbar,   {0}}, // 鼠标滚轮上 |  状态栏     | 根据状态栏的信号执行 ~/scripts/dwmstatusbar.sh $signal U
     {ClkStatusText,        0,          Button5,  clickstatusbar,   {0}}, // 鼠标滚轮下 |  状态栏     | 根据状态栏的信号执行 ~/scripts/dwmstatusbar.sh $signal D
     /* 点击bar空白处 */
-    { ClkBarEmpty,         0,          Button1,  spawn,            SHCMD("~/scripts/call_rofi.sh window") },  // 左键 | bar空白处 | rofi 执行 window 
-    { ClkBarEmpty,         0,          Button3,  spawn,            SHCMD("~/scripts/call_rofi.sh drun") },    // 右键 | bar空白处 | rofi 执行 drun
+    /* { ClkBarEmpty,         0,          Button1,  spawn,            SHCMD("~/scripts/call_rofi.sh window") },  // 左键 | bar空白处 | rofi 执行 window  */
+    /* { ClkBarEmpty,         0,          Button3,  spawn,            SHCMD("~/scripts/call_rofi.sh drun") },    // 右键 | bar空白处 | rofi 执行 drun */
 };
