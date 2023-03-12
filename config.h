@@ -201,23 +201,13 @@ static Key keys[] = {
     {MODKEY, XK_Return, spawn, SHCMD("st")}, /* super enter      | 打开st终端 */
     {MODKEY, XK_g, spawn, SHCMD("st -c global")}, /* super +          | 打开全局st终端         */
     {MODKEY, XK_p, spawn, SHCMD("st -c float")}, /* super space      | 打开浮动st终端         */
-    // { MODKEY,              XK_d,      spawn, SHCMD("~/scripts/call_rofi.sh run") },                             /* super d          | rofi: 执行run
-    // { MODKEY|ShiftMask,    XK_d,      spawn, SHCMD("~/scripts/call_rofi.sh // drun") },                            /* super shift d    | rofi: 执行drun
-    // { MODKEY,              XK_p,      spawn, SHCMD("~/scripts/call_rofi.sh // custom") },                          /* super p          | rofi: 执行自定义脚本
-    // {MODKEY, XK_e, spawn, SHCMD("thunar --class float")}, /* super e          | 文件管理器 */
     {MODKEY, XK_e, spawn, SHCMD("thunar")}, /* super e          | 文件管理器 */
-    // { MODKEY|ShiftMask,    XK_p,      spawn, SHCMD("~/scripts/call_rofi.sh
-    // window") },                          /* super shift p    | rofi:
-    // 执行window       
-    // { MODKEY,              XK_k,      spawn, // SHCMD("~/scripts/blurlock.sh") },                                  [> super k          | 锁定屏幕
-    // */ { MODKEY|ShiftMask, XK_Up, // spawn, SHCMD("~/scripts/set_vol.sh up") }, /* super shift up   | 音量加 */ { MODKEY|ShiftMask,    XK_Down,   spawn, SHCMD("~/scripts/set_vol.sh // down") },                              /* super shift down | 音量减 */
     {ControlMask | Mod1Mask, XK_a, spawn, SHCMD("flameshot gui")}, /* super shift a    | 截图                   */
-    // {ControlMask | Mod1Mask, XK_a, spawn, SHCMD("maim -s | xclip -selection clipboard -t image/png")}, /* super shift a    | 截图                   */
-    // { modkey|shiftmask,    xk_k,      spawn, shcmd("~/scripts/screenkey.sh") },                                 /* super shift k    | 打开键盘输入显示 */
     {MODKEY, XK_Escape, spawn, SHCMD("kill -9 $(xprop | grep _NET_WM_PID | awk '{print $3}')")}, /* super shift q    | 选中某个窗口并强制kill */
     {ShiftMask | ControlMask, XK_c, spawn, SHCMD("xclip -o | xclip -selection c")}, /* super shift c    | 进阶复制 */
     {MODKEY, XK_w, spawn, SHCMD("microsoft-edge-stable")}, /* super w          | Edge浏览器 */
     {Mod1Mask, XK_space, spawn, SHCMD("rofi -show drun")}, /* super space      | Rofi               */
+    {Mod1Mask | ShiftMask, XK_space, spawn, SHCMD("$HOME/Scripts/rofi.sh")}, /* super space      | Rofi               */
     {MODKEY | ShiftMask, XK_q, spawn, SHCMD("killall startdwm")}, /* super shift q    | kill dwm               */
     {0, 0x1008ff02, spawn, SHCMD("xbacklight -inc 1")}, /* super shift q    | kill dwm */
     {0, 0x1008ff03, spawn, SHCMD("xbacklight -dec 1")}, /* super shift q    | kill dwm */
@@ -226,8 +216,8 @@ static Key keys[] = {
     {0, 0x1008ff12, spawn, SHCMD("pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle")},
     {Mod1Mask | ControlMask, XK_z, spawn, SHCMD("/opt/apps/com.qq.weixin.deepin/files/run.sh -w")},
     {MODKEY , XK_m, spawn, SHCMD("feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &")},
-    {MODKEY | ShiftMask , XK_m, spawn, SHCMD("$HOME/Scripts/DynamicWallpapers/wallpaper-wrap.sh")},
-    {ControlMask | Mod1Mask , XK_l, spawn, SHCMD("slock")},
+    {MODKEY | ShiftMask , XK_m, spawn, SHCMD("$HOME/Scripts/DynamicWallpapers/wallpapers-wrap.sh")},
+    {ControlMask | MODKEY | Mod1Mask , XK_l, spawn, SHCMD("slock")},
 
     /* super key : 跳转到对应tag (可附加一条命令 若目标目录无窗口，则执行该命令)
      */
@@ -243,12 +233,6 @@ static Key keys[] = {
     TAGKEYS(XK_8, 7, 0)
     TAGKEYS(XK_9, 8, 0)
     TAGKEYS(XK_0, 9, 0)
-    // TAGKEYS(XK_9, 5,  "obs")
-    // TAGKEYS(XK_c, 6,  "google-chrome-stable")
-    // TAGKEYS(XK_m, 7,  "~/scripts/music_player.sh")
-    // TAGKEYS(XK_0, 8,  "linuxqq")
-    // TAGKEYS(XK_w, 9,  "/opt/apps/com.qq.weixin.deepin/files/run.sh")
-    // TAGKEYS(XK_l, 10, "/opt/apps/com.qq.weixin.work.deepin/files/run.sh")
 };
 static Button buttons[] = {
     /* click               event mask       button            function argument
