@@ -143,6 +143,9 @@ static Key keys[] = {
     {MODKEY | Mod1Mask,               XK_Left,    resizewin,         {.ui = H_REDUCE}},                                                /* super alt h        |  调整窗口 */
     {MODKEY | Mod1Mask,               XK_Right,   resizewin,         {.ui = H_EXPAND}},                                                /* super alt l        |  调整窗口 */
 
+    { MODKEY,                         XK_semicolon,       focusmon,          {.i         = +1} },                                              /* super v            |  光标移动到另一个显示器 */
+    { MODKEY|ShiftMask,               XK_semicolon,       tagmon,            {.i         = +1} },                                              /* super shift v      |  将聚焦窗口移动到另一个显示器 */
+
     //-----------------------------------------------------------------------------
   	{ MODKEY,                         XK_h,       focusdir,          {.i = 0 } },                                                      // 切换聚焦窗口
   	{ MODKEY,                         XK_j,       focusdir,          {.i = 1 } },                                                      // 切换聚焦窗口
