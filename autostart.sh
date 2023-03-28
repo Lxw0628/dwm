@@ -6,7 +6,7 @@ killall picom
 killall flameshot
 killall udiskie
 killall fcitx5
-killall cfw
+# killall cfw
 killall blueman-applet
 killall nm-applet
 killall dunst
@@ -28,7 +28,7 @@ nm-applet &
 blueman-applet &
 # bluetoothctl power off
 
-$HOME/.local/share/cfw/cfw &
+# /opt/clash-for-windows-chinese/cfw &
 
 fcitx5 &
 
