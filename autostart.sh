@@ -41,7 +41,7 @@ picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
 # feh --bg-fill --randomize $HOME/Pictures/wallpapers/8c30a659880811ebb6edd017c2d2eca2.png &
 
-/usr/lib/xfce-polkit/xfce-polkit
+/usr/lib/xfce-polkit/xfce-polkit &
 
 xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
 xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
