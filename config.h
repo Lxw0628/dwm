@@ -79,12 +79,12 @@ static const Rule rules[] = {
     { "global",    NULL,     NULL,         TAGMASK,     1,          1,          0,          -1},    // 特殊class client全局于所有tag
 };
 static const char *overviewtag     = "OVERVIEW";
-static const Layout overviewlayout = {"舘", overview};
+static const Layout overviewlayout = {"", overview};
 
 /* 自定义布局 */
 static const Layout layouts[] = {
-    {"Tile", tile},      /* 主次栈 */
-    {"Grid", magicgrid}, /* 网格 */
+    {"T", tile},      /* 主次栈 */
+    {"G", magicgrid}, /* 网格 */
 };
 
 #define SHCMD(cmd)                                                       \
