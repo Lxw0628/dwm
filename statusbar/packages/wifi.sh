@@ -6,20 +6,21 @@ this=_wifi
 # icon_color="^c#000080^^b#3870560x88^"
 # text_color="^c#000080^^b#3870560x99^"
 # text_color="^c#000080^^b#3870560x88^"
-icon_color="^c#FFFFFF^^b#333333^"
+# icon_color="^c#FFFFFF^^b#333333^"
 text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
-    wifi_icon="褐"
+    # wifi_icon="褐"
     wifi_text=$(nmcli | grep 已连接 | awk '{print $3}')
     [ "$wifi_text" = "" ] && wifi_text="未连接"
 
-    icon=" $wifi_icon "
-    text="$wifi_text "
+    # icon=" $wifi_icon "
+    text="Net:$wifi_text "
 
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
-    printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    # printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    printf "export %s='%s%s%s'\n" $this "$signal" "$text_color" "$text" >> $DWM/statusbar/temp
 }
 
 notify() {

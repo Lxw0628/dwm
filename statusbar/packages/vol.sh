@@ -17,7 +17,7 @@
 source ~/.zprofile
 
 this=_vol
-icon_color="^c#FFFFFF^^b#333333^"
+# icon_color="^c#FFFFFF^^b#333333^"
 text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
@@ -27,17 +27,19 @@ update() {
     volunmuted=$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')
     vol_text=$(pactl list sinks | grep $sink -A 7 | sed -n '8p' | awk '{printf int($5)}')
     # vol_text=$(amixer get Master | tail -1 | awk '{print $5}' | tr -d '[%]')
-    if [ "$volunmuted" = "off" ]; then vol_text="--"; vol_icon="ﱝ";
-    elif [ "$vol_text" -eq 0 ]; then vol_text="00"; vol_icon="婢";
-    elif [ "$vol_text" -lt 10 ]; then vol_icon="奔"; vol_text=0$vol_text;
-    elif [ "$vol_text" -le 50 ]; then vol_icon="奔";
-    else vol_icon="墳"; fi
+    # if [ "$volunmuted" = "off" ]; then vol_text="--"; vol_icon="ﱝ";
+    if [ "$volunmuted" = "off" ]; then vol_text="Mute";
+    # elif [ "$vol_text" -eq 0 ]; then vol_text="00"; vol_icon="婢";
+    # elif [ "$vol_text" -lt 10 ]; then vol_icon="奔"; vol_text=0$vol_text;
+    # elif [ "$vol_text" -le 50 ]; then vol_icon="奔";
+    else vol_text="$vol_text%"; fi
 
-    icon=" $vol_icon "
-    text="$vol_text% "
+    # icon=" $vol_icon "
+    text="Vol:$vol_text "
 
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
-    printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    # printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    printf "export %s='%s%s%s'\n" $this "$signal" "$text_color" "$text" >> $DWM/statusbar/temp
 }
 
 notify() {

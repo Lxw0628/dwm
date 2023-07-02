@@ -26,11 +26,11 @@ update() {
         "12") time_icon="" ;;
     esac
 
-    icon=" $time_icon "
+    icon="$time_icon "
     text="$time_text "
 
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
-    printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    printf "export %s='%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
 }
 
 notify() {
@@ -38,7 +38,7 @@ notify() {
     # _todo=$(cat ~/.todo.md | sed 's/\(- \[x\] \)\(.*\)/<span color="#ff79c6">\1<s>\2<\/s><\/span>/' | sed 's/- \[[ |x]\] //')
     # notify-send "  Calendar" "\n$_cal\n————————————————————\n$_todo" -r 9527
     # notify-send "  Calendar" "\n$_cal\n————————————————————\n" -r 9527
-    notify-send "  Calendar" "\n$_cal\n" -r 9527
+    notify-send "Calendar" "\n$_cal\n" -r 9527
 }
 
 # call_todo() {

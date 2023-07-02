@@ -6,30 +6,31 @@ source ~/.zprofile
 this=_bat
 # icon_color="^c#FFFFFF^^b#3333330xc0^"
 # text_color="^c#FFFFFF^^b#3333330xc0^"
-icon_color="^c#FFFFFF^^b#333333^"
+# icon_color="^c#FFFFFF^^b#333333^"
 text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
     bat_text=$(acpi -b | sed 2d | awk '{print $4}' | grep -Eo "[0-9]+")
-    [ ! "$bat_text" ] && bat_text=$(acpi -b | sed 2d | awk '{print $5}' | grep -Eo "[0-9]+")
-    if   [ "$bat_text" -ge 95 ]; then bat_icon="";
-    elif [ "$bat_text" -ge 90 ]; then bat_icon="";
-    elif [ "$bat_text" -ge 80 ]; then bat_icon="";
-    elif [ "$bat_text" -ge 70 ]; then bat_icon="";
-    elif [ "$bat_text" -ge 60 ]; then bat_icon="";
-    elif [ "$bat_text" -ge 50 ]; then bat_icon="";
-    elif [ "$bat_text" -ge 40 ]; then bat_icon="";
-    elif [ "$bat_text" -ge 30 ]; then bat_icon="";
-    elif [ "$bat_text" -ge 20 ]; then bat_icon="";
-    elif [ "$bat_text" -ge 10 ]; then bat_icon="";
-    else bat_icon=""; fi
+    # [ ! "$bat_text" ] && bat_text=$(acpi -b | sed 2d | awk '{print $5}' | grep -Eo "[0-9]+")
+    # if   [ "$bat_text" -ge 95 ]; then bat_icon="";
+    # elif [ "$bat_text" -ge 90 ]; then bat_icon="";
+    # elif [ "$bat_text" -ge 80 ]; then bat_icon="";
+    # elif [ "$bat_text" -ge 70 ]; then bat_icon="";
+    # elif [ "$bat_text" -ge 60 ]; then bat_icon="";
+    # elif [ "$bat_text" -ge 50 ]; then bat_icon="";
+    # elif [ "$bat_text" -ge 40 ]; then bat_icon="";
+    # elif [ "$bat_text" -ge 30 ]; then bat_icon="";
+    # elif [ "$bat_text" -ge 20 ]; then bat_icon="";
+    # elif [ "$bat_text" -ge 10 ]; then bat_icon="";
+    # else bat_icon=""; fi
 
     icon=" $bat_icon "
-    text="$bat_text% "
+    text="Bat:$bat_text% "
 
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
-    printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    # printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    printf "export %s='%s%s%s'\n" $this "$signal" "$text_color" "$text" >> $DWM/statusbar/temp
 }
 
 notify() {

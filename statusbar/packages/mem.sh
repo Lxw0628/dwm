@@ -4,12 +4,12 @@
 source ~/.zprofile
 
 this=_mem
-icon_color="^c#FFFFFF^^b#333333^"
+# icon_color="^c#FFFFFF^^b#333333^"
 text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
-	mem_icon=""
+	# mem_icon=""
     mem_total=$(cat /proc/meminfo | grep "MemTotal:"| awk '{print $2}')
     mem_free=$(cat /proc/meminfo | grep "MemFree:"| awk '{print $2}')
     mem_buffers=$(cat /proc/meminfo | grep "Buffers:"| awk '{print $2}')
@@ -17,11 +17,11 @@ update() {
     men_usage_rate=$(((mem_total - mem_free - mem_buffers - mem_cached) * 100 / mem_total))
     mem_text=$(echo $men_usage_rate | awk '{printf "%02d%", $1}')
 
-    icon=" $mem_icon "
-    text="$mem_text "
+    # icon=" $mem_icon "
+    text="Memory:$mem_text "
 
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
-    printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    printf "export %s='%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
 }
 
 notify() {
@@ -31,7 +31,7 @@ notify() {
 用量:\t $(echo "$free_result" | sed -n 2p | awk '{print $3}')/$(echo "$free_result" | sed -n 2p | awk '{print $2}')
 swap:\t $(echo "$free_result" | sed -n 3p | awk '{print $3}')/$(echo "$free_result" | sed -n 3p | awk '{print $2}')
 "
-    notify-send " Memory" "$text" -r 9527
+    notify-send "Memory" "$text" -r 9527
 }
 
 call_btop() {

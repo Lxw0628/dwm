@@ -4,24 +4,25 @@
 source ~/.zprofile
 
 this=_cpu
-icon_color="^c#FFFFFF^^b#333333^"
+# icon_color="^c#FFFFFF^^b#333333^"
 text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
-    cpu_icon="閭"
+    # cpu_icon="閭"
     cpu_text=$(top -n 1 -b | sed -n '3p' | awk '{printf "%02d%", 100 - $8}')
     temp_text=$(sensors coretemp-isa-0000 | head -3 | tail -1 | awk -F [+°C] '{print int($2)}')  
-    icon=" $cpu_icon "
-    text="$cpu_text|$temp_text°C "
+    # icon=" $cpu_icon "
+    text="CPU:$cpu_text|$temp_text°C "
     # text="$cpu_text "
 
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
-    printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    # printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    printf "export %s='%s%s%s'\n" $this "$signal" "$text_color" "$text" >> $DWM/statusbar/temp
 }
 
 notify() {
-    notify-send "閭 CPU tops" "\n$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)\\n\\n(100% per core)" -r 9527
+    notify-send "CPU tops" "\n$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)\\n\\n(100% per core)" -r 9527
 }
 
 call_btop() {
