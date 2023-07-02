@@ -83,8 +83,8 @@ static const Layout overviewlayout = {"舘", overview};
 
 /* 自定义布局 */
 static const Layout layouts[] = {
-    {"﬿", tile},      /* 主次栈 */
-    {"﩯", magicgrid}, /* 网格 */
+    {"Tile", tile},      /* 主次栈 */
+    {"Grid", magicgrid}, /* 网格 */
 };
 
 #define SHCMD(cmd)                                                       \
