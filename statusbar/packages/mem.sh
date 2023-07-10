@@ -10,18 +10,19 @@ signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
 	# mem_icon=""
-    mem_total=$(cat /proc/meminfo | grep "MemTotal:"| awk '{print $2}')
-    mem_free=$(cat /proc/meminfo | grep "MemFree:"| awk '{print $2}')
-    mem_buffers=$(cat /proc/meminfo | grep "Buffers:"| awk '{print $2}')
-    mem_cached=$(cat /proc/meminfo | grep -w "Cached:"| awk '{print $2}')
-    men_usage_rate=$(((mem_total - mem_free - mem_buffers - mem_cached) * 100 / mem_total))
-    mem_text=$(echo $men_usage_rate | awk '{printf "%02d%", $1}')
+    # mem_total=$(cat /proc/meminfo | grep "MemTotal:"| awk '{print $2}')
+    # mem_free=$(cat /proc/meminfo | grep "MemFree:"| awk '{print $2}')
+    # mem_buffers=$(cat /proc/meminfo | grep "Buffers:"| awk '{print $2}')
+    # mem_cached=$(cat /proc/meminfo | grep -w "Cached:"| awk '{print $2}')
+    # men_usage_rate=$(((mem_total - mem_free - mem_buffers - mem_cached) * 100 / mem_total))
+    # mem_text=$(echo $men_usage_rate | awk '{printf "%02d%", $1}')
+    mem_text=$(python -c 'import psutil;print(psutil.virtual_memory().percent)')
 
     # icon=" $mem_icon "
-    text="Memory:$mem_text "
+    text="Memory:$mem_text% "
 
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
-    printf "export %s='%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+    printf "export %s='%s%s%s'\n" $this "$signal" "$text_color" "$text" >> $DWM/statusbar/temp
 }
 
 notify() {

@@ -10,10 +10,11 @@ signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
     # cpu_icon="閭"
-    cpu_text=$(top -n 1 -b | sed -n '3p' | awk '{printf "%02d%", 100 - $8}')
+    # cpu_text=$(top -n1 -b | sed -n '3p' | awk '{printf "%02d%", 100 - $8}')
+    cpu_text=$(python3 -c 'import psutil;print(psutil.cpu_percent(1))')
     temp_text=$(sensors coretemp-isa-0000 | head -3 | tail -1 | awk -F [+°C] '{print int($2)}')  
     # icon=" $cpu_icon "
-    text="CPU:$cpu_text|$temp_text°C "
+    text="CPU:$cpu_text%|$temp_text°C "
     # text="$cpu_text "
 
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
