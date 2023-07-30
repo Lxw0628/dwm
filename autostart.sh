@@ -21,12 +21,9 @@ sh $DWM/statusbar/statusbar.sh cron
 # 适用于DWM的极简主义通知守护程序
 /usr/bin/dunst &
 
-xset r rate 250 50
-
 nm-applet &
 
 blueman-applet &
-bluetoothctl power off
 
 /opt/clash-for-windows-chinese/cfw &
 
@@ -45,3 +42,4 @@ feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
 
 xset r rate 250 50
 
+bluetoothctl power off
