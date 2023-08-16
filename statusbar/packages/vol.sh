@@ -52,8 +52,8 @@ click() {
         L) notify                                           ;; # 仅通知
         M) pactl set-sink-mute @DEFAULT_SINK@ toggle        ;; # 切换静音
         R) killall pavucontrol || pavucontrol &             ;; # 打开pavucontrol
-        U) pactl set-sink-volume @DEFAULT_SINK@ +1%; notify ;; # 音量加
-        D) pactl set-sink-volume @DEFAULT_SINK@ -1%; notify ;; # 音量减
+        U) pactl set-sink-volume @DEFAULT_SINK@ +1%; update ;; # 音量加
+        D) pactl set-sink-volume @DEFAULT_SINK@ -1%; update ;; # 音量减
     esac
 }
 

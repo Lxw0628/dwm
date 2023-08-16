@@ -2,7 +2,7 @@
 
 killall xfce-polkit
 killall feh
-killall picom 
+killall picom
 killall flameshot
 killall udiskie
 killall fcitx5
