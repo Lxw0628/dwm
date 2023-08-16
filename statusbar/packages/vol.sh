@@ -11,7 +11,7 @@
 #         Sample Specification: float32le 2ch 48000Hz
 #         Channel Map: front-left,front-right
 #         Owner Module: 4294967295
-# 静音 -> Mute: no                                                                                 
+# 静音 -> Mute: no
 # 音量 -> Volume: front-left: 13183 /  20% / -41.79 dB,   front-right: 13183 /  20% / -41.79 dB
 
 source ~/.zprofile
@@ -22,43 +22,50 @@ text_color="^c#FFFFFF^^b#333333^"
 signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
-    sink=$(pactl info | grep 'Default Sink' | awk '{print $3}')
-    # volunmuted=$(pactl list sinks | grep $sink -A 6 | sed -n '7p' | grep 'Mute: no')
-    volunmuted=$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')
-    vol_text=$(pactl list sinks | grep $sink -A 7 | sed -n '8p' | awk '{printf int($5)}')
-    # vol_text=$(amixer get Master | tail -1 | awk '{print $5}' | tr -d '[%]')
-    # if [ "$volunmuted" = "off" ]; then vol_text="--"; vol_icon="ﱝ";
-    if [ "$volunmuted" = "off" ]; then vol_text="Mute";
-    # elif [ "$vol_text" -eq 0 ]; then vol_text="00"; vol_icon="婢";
-    # elif [ "$vol_text" -lt 10 ]; then vol_icon="奔"; vol_text=0$vol_text;
-    # elif [ "$vol_text" -le 50 ]; then vol_icon="奔";
-    else vol_text="$vol_text%"; fi
+	sink=$(pactl info | grep 'Default Sink' | awk '{print $3}')
+	# volunmuted=$(pactl list sinks | grep $sink -A 6 | sed -n '7p' | grep 'Mute: no')
+	volunmuted=$(amixer get Master | tail -1 | awk '{print $6}' | tr -d '[]')
+	vol_text=$(pactl list sinks | grep $sink -A 7 | sed -n '8p' | awk '{printf int($5)}')
+	# vol_text=$(amixer get Master | tail -1 | awk '{print $5}' | tr -d '[%]')
+	# if [ "$volunmuted" = "off" ]; then vol_text="--"; vol_icon="ﱝ";
+	if [ "$volunmuted" = "off" ]; then
+		vol_text="Mute"
+	# elif [ "$vol_text" -eq 0 ]; then vol_text="00"; vol_icon="婢";
+	# elif [ "$vol_text" -lt 10 ]; then vol_icon="奔"; vol_text=0$vol_text;
+	# elif [ "$vol_text" -le 50 ]; then vol_icon="奔";
+	else vol_text="$vol_text%"; fi
 
-    # icon=" $vol_icon "
-    text="Vol:$vol_text "
+	# icon=" $vol_icon "
+	text="Vol:$vol_text "
 
-    sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
-    # printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
-    printf "export %s='%s%s%s'\n" $this "$signal" "$text_color" "$text" >> $DWM/statusbar/temp
+	sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
+	# printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
+	printf "export %s='%s%s%s'\n" $this "$signal" "$text_color" "$text" >>$DWM/statusbar/temp
 }
 
 notify() {
-    update
-    notify-send -r 9527 -h int:value:$vol_text -h string:hlcolor:#dddddd "$vol_icon Volume"
+	update
+	notify-send -r 9527 -h int:value:$vol_text -h string:hlcolor:#dddddd "$vol_icon Volume"
 }
 
 click() {
-    case "$1" in
-        L) notify                                           ;; # 仅通知
-        M) pactl set-sink-mute @DEFAULT_SINK@ toggle        ;; # 切换静音
-        R) killall pavucontrol || pavucontrol &             ;; # 打开pavucontrol
-        U) pactl set-sink-volume @DEFAULT_SINK@ +1%; update ;; # 音量加
-        D) pactl set-sink-volume @DEFAULT_SINK@ -1%; update ;; # 音量减
-    esac
+	case "$1" in
+	L) notify ;;                                    # 仅通知
+	M) pactl set-sink-mute @DEFAULT_SINK@ toggle ;; # 切换静音
+	R) killall pavucontrol || pavucontrol & ;;      # 打开pavucontrol
+	U)
+		pactl set-sink-volume @DEFAULT_SINK@ +1%
+		update
+		;; # 音量加
+	D)
+		pactl set-sink-volume @DEFAULT_SINK@ -1%
+		update
+		;; # 音量减
+	esac
 }
 
 case "$1" in
-    click) click $2 ;;
-    notify) notify ;;
-    *) update ;;
+click) click $2 ;;
+notify) notify ;;
+*) update ;;
 esac
