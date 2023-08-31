@@ -29,7 +29,7 @@ blueman-applet &
 
 fcitx5 &
 
-udiskie &
+udisksctl mount -b /dev/sda5 &
 
 flameshot &
 
