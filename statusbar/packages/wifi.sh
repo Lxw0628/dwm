@@ -12,11 +12,12 @@ signal=$(echo "^s$this^" | sed 's/_//')
 
 update() {
 	# wifi_icon="褐"
-	wifi_text=$(nmcli | grep 已连接 | awk '{print $3}')
+	# wifi_text=$(nmcli | grep 已连接 | awk '{print $3}')
+	wifi_text=$(nmcli | grep 已连接 | awk '{for(i=1; i<=NF; i++) if(i > 2) printf("%s ", $i)};')
 	[ "$wifi_text" = "" ] && wifi_text="未连接"
 
 	# icon=" $wifi_icon "
-	text="Net:$wifi_text "
+	text="Net:$wifi_text"
 
 	sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
 	# printf "export %s='%s%s%s%s%s'\n" $this "$signal" "$icon_color" "$icon" "$text_color" "$text" >> $DWM/statusbar/temp
