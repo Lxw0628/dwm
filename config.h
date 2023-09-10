@@ -105,7 +105,7 @@ static Key keys[] = {
     {MODKEY|ControlMask,              XK_l,       viewtoright,       {0}},                                                             /* super ctrl l       |  聚焦到右边的tag */
     {MODKEY|ShiftMask|ControlMask,    XK_h,       tagtoleft,         {0}},                                                             /* super shift ctrl h |  将本窗口移动到左边tag */
     {MODKEY|ShiftMask|ControlMask,    XK_l,       tagtoright,        {0}},                                                             /* super shift ctrl l |  将本窗口移动到右边tag */
-    {MODKEY,                          XK_Tab,     toggleoverview,    {0}},                                                             /* super tab          |  显示所有tag 或 跳转到聚焦窗口的tag */
+    {Mod1Mask,                        XK_Tab,     toggleoverview,    {0}},                                                             /* Alt tab            |  显示所有tag 或 跳转到聚焦窗口的tag */
 
     {MODKEY,                          XK_comma,   setmfact,          {.f = -0.01}},                                                    /* super ,            |  缩小主工作区 */
     {MODKEY,                          XK_period,  setmfact,          {.f = +0.01}},                                                    /* super .            |  放大主工作区 */
