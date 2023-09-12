@@ -42,4 +42,4 @@ feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
 
 xset r rate 250 50
 
-bluetoothctl power off
+
