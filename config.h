@@ -218,5 +218,6 @@ static Button buttons[] = {
     {ClkStatusText,        0,          Button5,  clickstatusbar,   {0}}, // 鼠标滚轮下 |  状态栏     | 根据状态栏的信号执行 ~/scripts/dwmstatusbar.sh $signal D
     /* 点击bar空白处 */
     /* { ClkBarEmpty,         0,          Button1,  spawn,            SHCMD("~/scripts/call_rofi.sh window") },  // 左键 | bar空白处 | rofi 执行 window  */
+    { ClkBarEmpty,         0,          Button2,  spawn,            SHCMD("$HOME/Scripts/rofi.sh") },  // 中键 | bar空白处 | rofi 执行 window 
     /* { ClkBarEmpty,         0,          Button3,  spawn,            SHCMD("~/scripts/call_rofi.sh drun") },    // 右键 | bar空白处 | rofi 执行 drun */
 };
