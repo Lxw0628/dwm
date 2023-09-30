@@ -33,7 +33,7 @@ fcitx5 &
 
 flameshot &
 
-picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+# picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
 feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
 
