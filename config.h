@@ -38,7 +38,7 @@ static const char *colors[][3]            = {
     [SchemeSel]       = {"#bbbbbb", "#333333", "#42A5F5"},
     [SchemeSelGlobal] = {"#bbbbbb", "#333333", "#FFC0CB"},
     [SchemeSelTag]    = {"#bbbbbb", "#333333", NULL},
-    [SchemeHid]       = {"#bbbbbb", "#555555", NULL},
+    [SchemeHid]       = {"#333333", "#555555", NULL},
     [SchemeUnderline] = {"#7799AA", NULL,      NULL},
 };
 static const unsigned int alphas[][3] = {
