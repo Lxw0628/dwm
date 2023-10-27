@@ -29,6 +29,10 @@ blueman-applet &
 
 fcitx5 &
 
+thunar --daemon
+
+udiskie -2 &
+
 # udisksctl mount -b /dev/sda5 &
 
 flameshot &
