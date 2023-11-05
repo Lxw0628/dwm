@@ -1,6 +1,6 @@
 #include <X11/XF86keysym.h>
 
-static int showsystray                    = 1;      // 是否显示托盘栏
+static int showsystray                    = 0;      // 是否显示托盘栏
 static const int newclientathead          = 0;      // 定义新窗口在栈顶还是栈底
 static const unsigned int borderpx        = 2;      // 窗口边框大小
 static const unsigned int systraypinning  = 0;      // 托盘跟随的显示器 0代表不指定显示器

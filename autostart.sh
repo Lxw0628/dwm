@@ -6,7 +6,8 @@ killall picom
 killall flameshot
 killall udiskie
 killall fcitx5
-killall cfw
+# killall cfw
+killall clash-verge
 killall blueman-applet
 killall nm-applet
 killall dunst
@@ -25,17 +26,16 @@ nm-applet &
 
 blueman-applet &
 
-/opt/clash-for-windows-chinese/cfw &
+# /opt/clash-for-windows-chinese/cfw &
+clash-verge &
 
 fcitx5 &
 
-thunar --daemon
-
-udiskie -2 &
-
-# udisksctl mount -b /dev/sda5 &
+thunar --daemon &
 
 flameshot &
+
+# udisksctl mount -b /dev/sda5 &
 
 # picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
@@ -45,4 +45,4 @@ feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
 
 xset r rate 250 50
 
-
+udiskie -2 &
