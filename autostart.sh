@@ -6,7 +6,6 @@ killall picom
 killall flameshot
 killall udiskie
 killall fcitx5
-# killall cfw
 killall clash-verge
 killall blueman-applet
 killall nm-applet
@@ -26,7 +25,6 @@ nm-applet &
 
 blueman-applet &
 
-# /opt/clash-for-windows-chinese/cfw &
 clash-verge &
 
 fcitx5 &
@@ -37,12 +35,16 @@ flameshot &
 
 # udisksctl mount -b /dev/sda5 &
 
-# picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
 feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
 
 /usr/lib/xfce-polkit/xfce-polkit &
 
+xrandr --output HDMI-2 --mode 1920x1080 --rate 120.00 --output eDP-1 --off
+
 xset r rate 250 50
+
+bluetoothctl power off
 
 udiskie -2 &
