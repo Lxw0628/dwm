@@ -37,7 +37,8 @@ flameshot &
 
 picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
-feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
+# feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
+feh --bg-fill $HOME/Pictures/wallpapers/archlinux/wallhaven-qzg11q_3840x2160.png &
 
 /usr/lib/xfce-polkit/xfce-polkit &
 
