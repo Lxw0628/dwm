@@ -35,7 +35,7 @@ flameshot &
 
 # udisksctl mount -b /dev/sda5 &
 
-picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+# picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
 # feh --bg-fill --randomize $HOME/Pictures/wallpapers/* &
 feh --bg-fill $HOME/Pictures/wallpapers/archlinux/wallhaven-qzg11q_3840x2160.png &
