@@ -451,7 +451,7 @@ applyrules(Client *c)
     if (!strcmp(c->name, scratchpadname)) {
         c->isscratchpad = 1;
         c->isglobal = 1; // scratchpad is default global
-    } 
+    }
     if (ch.res_class)
         XFree(ch.res_class);
     if (ch.res_name)
@@ -594,7 +594,7 @@ buttonpress(XEvent *e)
     if (ev->window == selmon->barwin || (!c && selmon->showbar && (topbar ? ev->y <= selmon->wy : ev->y >= selmon->wy))) { // 点击在bar上
         i = x = 0;
         blw = TEXTW(selmon->ltsymbol);
-        
+
         if (selmon->isoverview) {
             x += TEXTW(overviewtag);
             i = ~0;
@@ -1901,8 +1901,8 @@ movewin(const Arg *arg)
                 // 若浮动tc c的顶边会穿过tc的底边 
                 if (!ISVISIBLE(tc) || !tc->isfloating || tc == c) continue;
                 if (c->x + WIDTH(c) < tc->x || c->x > tc->x + WIDTH(tc)) continue;
-                buttom = tc->y + HEIGHT(tc) + gappi;  
-                if (top > buttom && ny < buttom) {  
+                buttom = tc->y + HEIGHT(tc) + gappi;
+                if (top > buttom && ny < buttom) {
                     tar = MAX(tar, buttom);
                 };
             }
@@ -1918,7 +1918,7 @@ movewin(const Arg *arg)
                 if (!ISVISIBLE(tc) || !tc->isfloating || tc == c) continue;
                 if (c->x + WIDTH(c) < tc->x || c->x > tc->x + WIDTH(tc)) continue;
                 top = tc->y - gappi;
-                if (buttom < top && (ny + HEIGHT(c)) > top) {  
+                if (buttom < top && (ny + HEIGHT(c)) > top) {
                     tar = MIN(tar, top - HEIGHT(c));
                 };
             }
@@ -2007,7 +2007,7 @@ resizewin(const Arg *arg)
                 if (!ISVISIBLE(tc) || !tc->isfloating || tc == c) continue;
                 if (c->x + WIDTH(c) < tc->x || c->x > tc->x + WIDTH(tc)) continue;
                 top = tc->y - gappi;
-                if (buttom < top && (c->y + nh) > top) {  
+                if (buttom < top && (c->y + nh) > top) {
                     tar = MAX(tar, top - c->y - 2 * c->bw);
                 };
             }
@@ -3834,70 +3834,73 @@ focusdir(const Arg *arg)
     }
 }
 
-void ExchangeTwoClient(Client* c1, Client* c2) {
-  if(c1==NULL || c2==NULL || c1->mon!=c2->mon) { return ; }
+void
+ExchangeTwoClient(Client *c1, Client *c2)
+{
+    if (c1 == NULL || c2 == NULL || c1->mon != c2->mon) { return; }
 
-  // 先找c1的上一个节点
-  Client head1;
-  Client *headp1=&head1;
-  headp1->next=selmon->clients;
-  Client *tmp1 = headp1;
-  for (; tmp1 != NULL; tmp1 = tmp1->next) {
-    if(tmp1->next!=NULL) {
-      if( tmp1->next==c1 )
-      break;
-    } else {
-      break;
+    // 先找c1的上一个节点
+    Client head1;
+    Client *headp1 = &head1;
+    headp1->next = selmon->clients;
+    Client *tmp1 = headp1;
+    for (; tmp1 != NULL; tmp1 = tmp1->next) {
+        if (tmp1->next != NULL) {
+            if (tmp1->next == c1)
+                break;
+        } else {
+            break;
+        }
     }
-  }
 
-  // 再找c2的上一个节点
-  Client head2;
-  Client *headp2=&head2;
-  headp2->next=selmon->clients;
-  Client *tmp2 = headp2;
-  for (; tmp2 != NULL; tmp2 = tmp2->next) {
-    if(tmp2->next!=NULL) {
-      if( tmp2->next==c2 )
-      break;
-    } else {
-      break;
+    // 再找c2的上一个节点
+    Client head2;
+    Client *headp2 = &head2;
+    headp2->next = selmon->clients;
+    Client *tmp2 = headp2;
+    for (; tmp2 != NULL; tmp2 = tmp2->next) {
+        if (tmp2->next != NULL) {
+            if (tmp2->next == c2)
+                break;
+        } else {
+            break;
+        }
     }
-  }
 
-  if(tmp1==NULL) { /* gDebug("tmp1==null"); */ return ; }
-  if(tmp2==NULL) {/*  gDebug("tmp2==null"); */ return ; }
-  if(tmp1->next==NULL) {/*  gDebug("tmp1->next==null"); */ return ; }
-  if(tmp2->next==NULL) { /* gDebug("tmp2->next==null");  */return ; }
+    if (tmp1 == NULL) { /* gDebug("tmp1==null"); */ return; }
+    if (tmp2 == NULL) {/*  gDebug("tmp2==null"); */ return; }
+    if (tmp1->next == NULL) {/*  gDebug("tmp1->next==null"); */ return; }
+    if (tmp2->next == NULL) { /* gDebug("tmp2->next==null");  */return; }
 
-  // 当c1和c2为相邻节点时
-  if(c1->next==c2) {
-    c1->next=c2->next;
-    c2->next=c1;
-    tmp1->next=c2;
-  } else if(c2->next==c1) {
-    c2->next=c1->next;
-    c1->next=c2;
-    tmp2->next=c1;
-  } else { // 不为相邻节点
-    tmp1->next=c2;
-    tmp2->next=c1;
-    Client* tmp=c1->next;
-    c1->next=c2->next;
-    c2->next=tmp;
-  }
+    // 当c1和c2为相邻节点时
+    if (c1->next == c2) {
+        c1->next = c2->next;
+        c2->next = c1;
+        tmp1->next = c2;
+    } else if (c2->next == c1) {
+        c2->next = c1->next;
+        c1->next = c2;
+        tmp2->next = c1;
+    } else { // 不为相邻节点
+        tmp1->next = c2;
+        tmp2->next = c1;
+        Client *tmp = c1->next;
+        c1->next = c2->next;
+        c2->next = tmp;
+    }
 
-  // 当更换节点为头节点时，重置头节点
-  if(c1==selmon->clients) {
-    selmon->clients=c2;
-  }else if(c2==selmon->clients) {
-    selmon->clients=c1;
-  }
+    // 当更换节点为头节点时，重置头节点
+    if (c1 == selmon->clients) {
+        selmon->clients = c2;
+    } else if (c2 == selmon->clients) {
+        selmon->clients = c1;
+    }
 
-	focus(c1);
-	arrange(c1->mon);
-  pointerfocuswin(c1);
+    focus(c1);
+    arrange(c1->mon);
+    pointerfocuswin(c1);
 }
+
 void
 ExchangeClient(const Arg *arg)
 {
