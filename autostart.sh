@@ -46,6 +46,4 @@ xrandr --output HDMI-2 --mode 1920x1080 --rate 120.00 --output eDP-1 --off
 
 xset r rate 250 50
 
-bluetoothctl power off
-
 udiskie -2 &
