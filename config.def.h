@@ -162,6 +162,7 @@ static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *dunstcloseallcmd[] = { "dunstctl", "close-all", NULL };
 static const char *thunarcmd[] = { "thunar", NULL };
+static const char *layoutmenu_cmd = "layoutmenu.sh";
 
 static const Key keys[] = {
     /* modifier                         key         function        argument */
