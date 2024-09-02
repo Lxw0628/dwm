@@ -1,0 +1,7 @@
+dwm 
+config.h 
+*.o
+*.orig
+*.rej
+.vscode/
+.idea/
