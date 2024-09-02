@@ -5,18 +5,18 @@
 # [M] Monocle Layout	2
 
 cat <<EOF | xmenu | awk '{print $3}'
-[]=  tile                   0
-[M]  monocle                1
-[@]  spiral                 2
-[\\]  dwindle                3
-H[]  deck                   4
-TTT  bstack                 5
-===  bstackhoriz            6
-HHH  grid                   7
-###  nrowgrid               8
----  horizgrid              9
-:::  gaplessgrid            10
-|M|  centeredmaster         11
->M>  centeredfloatingmaster 12
-><>  floating               13
+[]=  平铺             0
+[M]  单窗口           1
+[@]  螺旋             2
+[\\]  递减螺旋         3
+H[]  叠加             4
+TTT  底部栈           5
+===  水平底部栈       6
+HHH  网格             7
+###  行网格           8
+---  水平网格         9
+:::  无间隙网格       10
+|M|  居中主窗口       11
+>M>  居中浮动主窗口   12
+><>  浮动             13
 EOF
