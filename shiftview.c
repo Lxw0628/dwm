@@ -11,16 +11,27 @@
 void
 shiftview(const Arg *arg) {
   Arg shifted;
+  unsigned int newtagset = selmon->tagset[selmon->seltags];
+  unsigned int occupiedtags = 0;
 
-  // left circular shift
-  if (arg->i > 0)
-    shifted.ui = (selmon->tagset[selmon->seltags] << arg->i) |
-                 (selmon->tagset[selmon->seltags] >> (LENGTH(tags) - arg->i));
+  // 检查每个标签是否有窗口
+  Client *c;
+  for (c = selmon->clients; c; c = c->next)
+    occupiedtags |= c->tags;
 
-  // right circular shift
-  else
-    shifted.ui = selmon->tagset[selmon->seltags] >> (-arg->i) |
-                 selmon->tagset[selmon->seltags] << (LENGTH(tags) + arg->i);
+  // 左循环移位
+  if (arg->i > 0) {
+    do {
+      newtagset = (newtagset << arg->i) | (newtagset >> (LENGTH(tags) - arg->i));
+    } while (!(newtagset & occupiedtags));  // 跳过没有窗口的标签
+  }
+  // 右循环移位
+  else {
+    do {
+      newtagset = (newtagset >> (-arg->i)) | (newtagset << (LENGTH(tags) + arg->i));
+    } while (!(newtagset & occupiedtags));  // 跳过没有窗口的标签
+  }
 
+  shifted.ui = newtagset;
   view(&shifted);
 }
