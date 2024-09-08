@@ -13,7 +13,7 @@ xset r rate 200 50
 # xbacklight -set 10 &
 # feh --bg-fill --no-fehbg ~/Pictures/wallpapers/osu_bg/BG.jpg
 feh --bg-fill --no-fehbg ~/Pictures/wallpapers/catppuccin/mocha.png
-picom --animations --config ~/.config/picom/picom.conf &
+picom --config ~/.config/picom/picom.conf &
 
 
 fcitx5 -d &
