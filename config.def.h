@@ -224,6 +224,10 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,                 -1,         XK_Return,  zoom,           {0} },
     { Mod1Mask,                         -1,         XK_Tab,     view,           {0} },
 
+    { MODKEY|ControlMask,               -1,         XK_j,       focussame,      {.i = +1 } },
+    { MODKEY|ControlMask,               -1,         XK_k,       focussame,      {.i = -1 } },
+
+
     // overall gaps
     { MODKEY|ControlMask,               -1,         XK_i,       incrgaps,       {.i = +1 } },
     { MODKEY|ControlMask,               -1,         XK_d,       incrgaps,       {.i = -1 } },
