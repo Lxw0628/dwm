@@ -21,7 +21,7 @@ blueman-applet &
 pa-applet &
 nm-applet &
 birdtray &
-udiskie -2 --tray &
+udiskie --tray &
 clash-verge &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/bin/dunst &
