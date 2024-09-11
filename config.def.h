@@ -29,12 +29,6 @@ static const int horizpadtabo       = 15;
 static const int scalepreview       = 4;
 static const int tag_preview        = 0;        /* 1 means enable, 0 is off */
 static const int colorfultag        = 1;        /* 0 means use SchemeSel for selected non vacant tag */
-static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
-static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
-static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
-// TODO: 使用脚本判断当前所处monitor，调用对应命令调亮度
-static const char *light_up[] = {"/usr/bin/light", "-A", "5", NULL};
-static const char *light_down[] = {"/usr/bin/light", "-U", "5", NULL};
 static const int new_window_attach_on_end = 0; /*  1 means the new window will attach on the end; 0 means the new window will attach on the front,default is front */
 #define ICONSIZE 19   /* icon size */
 #define ICONSPACING 8 /* space between icon and title */
@@ -158,11 +152,17 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
-static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *upvol[]            = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
+static const char *downvol[]          = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
+static const char *mutevol[]          = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+// TODO: 使用脚本判断当前所处monitor，调用对应命令调亮度
+static const char *light_up[]         = {"/usr/bin/light", "-A", "5", NULL};
+static const char *light_down[]       = {"/usr/bin/light", "-U", "5", NULL};
+static const char *flameshotcmd[]     = { "flameshot", "gui", NULL };
+static const char *firefoxcmd[]       = { "firefox", NULL };
 static const char *dunstcloseallcmd[] = { "dunstctl", "close-all", NULL };
-static const char *thunarcmd[] = { "thunar", NULL };
-static const char *layoutmenu_cmd = "$HOME/.config/dwm/layoutmenu.sh";
+static const char *thunarcmd[]        = { "thunar", NULL };
+static const char *layoutmenu_cmd     = "$HOME/.config/dwm/layoutmenu.sh";
 
 static const Key keys[] = {
     /* modifier                         chain key   key         function        argument */
