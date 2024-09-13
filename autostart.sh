@@ -14,6 +14,7 @@ xset r rate 200 50
 # feh --bg-fill --no-fehbg ~/Pictures/wallpapers/osu_bg/BG.jpg
 feh --bg-fill --no-fehbg ~/Pictures/wallpapers/catppuccin/mocha.png
 picom --config ~/.config/picom/picom.conf &
+# picom --experimental-backends --config ~/.config/picom/picom.conf &
 
 
 fcitx5 -d &
