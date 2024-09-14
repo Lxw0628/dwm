@@ -1842,9 +1842,10 @@ void focussame(const Arg *arg) {
 
   Client *clients[32];
   int num_clients = 0;
+
+  // 遍历当前 monitor 的所有 client，不受工作区限制
   for (c = selmon->clients; c && num_clients < 32; c = c->next) {
-    if (c->tags & selmon->tagset[selmon->seltags] &&
-        XGetClassHint(dpy, c->win, &ch)) {
+    if (XGetClassHint(dpy, c->win, &ch)) {
       if (strcmp(class_name, ch.res_class) == 0)
         clients[num_clients++] = c;
       XFree(ch.res_class);
@@ -1873,7 +1874,21 @@ void focussame(const Arg *arg) {
       target_client = clients[num_clients - 1];
   }
 
+  // 如果找到目标 client
   if (target_client) {
+    // 切换到目标 client 所在的工作区
+    unsigned int target_tag = target_client->tags;
+    if (!(selmon->tagset[selmon->seltags] & target_tag)) {
+      for (int i = 0; i < LENGTH(tags); i++) {
+        if (target_tag & (1 << i)) {
+          const Arg view_arg = {.ui = 1 << i};
+          view(&view_arg);
+          break;
+        }
+      }
+    }
+
+    // 然后聚焦到目标窗口
     focus(target_client);
     restack(selmon);
     lastfocusedwin = target_client->win;
