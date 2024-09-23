@@ -1938,6 +1938,10 @@ void focusmon(const Arg *arg) {
   unfocus(selmon->sel, 0);
   selmon = m;
   focus(NULL);
+
+  /* 将鼠标移动到目标Monitor中心 */
+  XWarpPointer(dpy, None, XDefaultRootWindow(dpy), 0, 0, 0, 0,
+               selmon->mx + selmon->mw / 2, selmon->my + selmon->mh / 2);
 }
 
 void focusstack(const Arg *arg) {
