@@ -3312,6 +3312,7 @@ void tag(const Arg *arg) {
     selmon->sel->tags = arg->ui & TAGMASK;
     setclienttagprop(c);
     focus(NULL);
+    view(arg);
     arrange(selmon);
   }
 }

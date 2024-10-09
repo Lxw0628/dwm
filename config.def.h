@@ -191,7 +191,7 @@ static const Key keys[] = {
     { MODKEY,                           -1,         XK_e,       spawn,          {.v = thunarcmd}},
 
     // toggle stuff
-    { MODKEY,                           -1,         XK_b,       togglebar,      {0} },
+    { MODKEY,                           XK_b,         XK_b,       togglebar,      {0} },
     { MODKEY|ControlMask,               -1,         XK_t,       togglegaps,     {0} },
     { MODKEY,                           -1,         XK_f,       togglefloating, {0} },
     { MODKEY,                           -1,         XK_g,       togglefullscr,  {0} },
@@ -269,9 +269,9 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,                 -1,         XK_period,  tagmon,         {.i = +1 } },
 
     // change border size
-    { MODKEY|ShiftMask,                 -1,         XK_minus,   setborderpx,    {.i = -1 } },
-    { MODKEY|ShiftMask,                 -1,         XK_p,       setborderpx,    {.i = +1 } },
-    { MODKEY|ShiftMask,                 -1,         XK_w,       setborderpx,    {.i = default_border } },
+    { MODKEY|ShiftMask,                 XK_b,         XK_p,   setborderpx,    {.i = -1 } },
+    { MODKEY|ShiftMask,                 XK_b,         XK_n,       setborderpx,    {.i = +1 } },
+    { MODKEY|ShiftMask,                 XK_b,         XK_equal,       setborderpx,    {.i = default_border } },
 
     // kill dwm
     { MODKEY|ShiftMask|ControlMask,     -1,         XK_q,       spawn,        SHCMD("killall bar.sh dwm") },
