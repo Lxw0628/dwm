@@ -108,7 +108,13 @@ static const Rule rules[] = {
     { NULL,       "spterm",   NULL,       SPTAG(0),     0,           1,          -1 },
     { NULL,       "spfm",     NULL,       SPTAG(1),     0,           1,          -1 },
     { NULL,       "keepassxc",NULL,       SPTAG(2),     0,           0,          -1 },
-    { "eww",      NULL,       NULL,       0,            0,           1,           -1 },
+    { "eww",      NULL,       NULL,       0,            0,           1,          -1 },
+
+    { NULL,       NULL,       "保存文件",        0,     0,           1,          -1}, // 浏览器保存文件      浮动
+    { NULL,       NULL,       "图片查看器",      0,     0,           1,          -1}, // qq图片查看器        浮动
+    { NULL,       NULL,       "图片查看",        0,     0,           1,          -1}, // 微信图片查看器      浮动
+    { NULL,       NULL,       "图片预览",        0,     0,           1,          -1}, // 企业微信图片查看器  浮动
+    { NULL,       NULL,       "Media viewer",    0,     0,           1,          -1}, // tg图片查看器        浮动
 };
 
 /* layout(s) */
@@ -278,6 +284,7 @@ static const Key keys[] = {
 
     // kill window
     { MODKEY,                           -1,         XK_q,       killclient,     {0} },
+    { MODKEY,                           -1,         XK_Escape,  forcekillclient,{0} },
 
     // restart
     { MODKEY|ShiftMask,                 -1,         XK_r,       restart,        {0} },
