@@ -201,7 +201,7 @@ static const Key keys[] = {
     { MODKEY|ControlMask,               -1,         XK_t,       togglegaps,     {0} },
     { MODKEY,                           -1,         XK_f,       togglefloating, {0} },
     { MODKEY,                           -1,         XK_g,       togglefullscr,  {0} },
-    { MODKEY,                           -1,         XK_Tab,     winview,        {0} },
+    // { MODKEY,                           -1,         XK_Tab,     winview,        {0} },
 
     { MODKEY|ControlMask,               -1,         XK_w,       tabmode,        { -1 } },
     { MODKEY,                           -1,         XK_j,       focusstack,     {.i = +1 } },
