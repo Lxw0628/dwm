@@ -31,7 +31,7 @@ static const int tag_preview        = 0;        /* 1 means enable, 0 is off */
 static const int colorfultag        = 1;        /* 0 means use SchemeSel for selected non vacant tag */
 static const int new_window_attach_on_end = 0; /*  1 means the new window will attach on the end; 0 means the new window will attach on the front,default is front */
 #define ICONSIZE 19   /* icon size */
-#define ICONSPACING 8 /* space between icon and title */
+#define ICONSPACING 5 /* space between icon and title */
 
 // static const char *fonts[]          = {"Iosevka:style:medium:size=12" ,"JetBrainsMono Nerd Font Mono:style:medium:size=19" };
 static const char *fonts[]          = { "Maple UI:style:Regular:size=12" };
@@ -81,12 +81,12 @@ static Sp scratchpads[] = {
 // static char *tags[] = {"", "", "", "", ""};
 static char *tags[] = {"一", "二", "三", "四", "五", "六", "七", "八", "九", "零"};
 
-static const char* eww[] = { "eww", "open" , "eww", NULL };
+// static const char* eww[] = { "eww", "open" , "eww", NULL };
 
-static const Launcher launchers[] = {
-    /* command     name to display */
-    { eww,         "" },
-};
+// static const Launcher launchers[] = {
+//     /* command     name to display */
+//     { eww,         "" },
+// };
 
 static const int tagschemes[] = {
     SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4, SchemeTag5, SchemeTag6, SchemeTag7, SchemeTag8, SchemeTag9, SchemeTag10
@@ -108,7 +108,7 @@ static const Rule rules[] = {
     { NULL,       "spterm",   NULL,       SPTAG(0),     0,           1,          -1 },
     { NULL,       "spfm",     NULL,       SPTAG(1),     0,           1,          -1 },
     { NULL,       "keepassxc",NULL,       SPTAG(2),     0,           0,          -1 },
-    { "eww",      NULL,       NULL,       0,            0,           1,          -1 },
+    // { "eww",      NULL,       NULL,       0,            0,           1,          -1 },
 
     { NULL,       NULL,       "保存文件",        0,     0,           1,          -1}, // 浏览器保存文件      浮动
     { NULL,       NULL,       "图片查看器",      0,     0,           1,          -1}, // qq图片查看器        浮动
