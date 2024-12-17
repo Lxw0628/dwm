@@ -166,7 +166,6 @@ static const char *mutevol[]          = { "/usr/bin/pactl", "set-sink-mute",   "
 // TODO: 使用脚本判断当前所处monitor，调用对应命令调亮度
 static const char *light_up[]         = {"/usr/bin/light", "-A", "5", NULL};
 static const char *light_down[]       = {"/usr/bin/light", "-U", "5", NULL};
-static const char *flameshotcmd[]     = { "flameshot", "gui", NULL };
 static const char *firefoxcmd[]       = { "firefox-developer-edition", NULL };
 static const char *dunstcloseallcmd[] = { "dunstctl", "close-all", NULL };
 static const char *thunarcmd[]        = { "thunar", NULL };
@@ -181,11 +180,6 @@ static const Key keys[] = {
     {0,                                 -1,         XF86XK_AudioRaiseVolume,        spawn,          {.v = upvol}},
     {0,                                 -1,         XF86XK_MonBrightnessUp,         spawn,          {.v = light_up}},
     {0,                                 -1,         XF86XK_MonBrightnessDown,       spawn,          {.v = light_down}},
-
-    // screenshot fullscreen and cropped
-    {MODKEY|ControlMask,                -1,         XK_a,       spawn,          SHCMD("maim | xclip -selection clipboard -t image/png")},
-    {MODKEY,                            -1,         XK_a,       spawn,          SHCMD("maim --select | xclip -selection clipboard -t image/png")},
-    { Mod1Mask|ControlMask,             -1,         XK_a,       spawn,          {.v = flameshotcmd}},
 
     { Mod1Mask,                         -1,         XK_space,   spawn,          SHCMD("$HOME/.config/rofi/bin/launcher") },
     { MODKEY,                           -1,         XK_Return,  spawn,          SHCMD("kitty")},

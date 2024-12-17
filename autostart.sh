@@ -32,3 +32,5 @@ clash-verge &
 thunar --daemon &
 xsettingsd &
 xfce4-power-manager &
+
+Snipaste &
