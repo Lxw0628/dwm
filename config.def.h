@@ -324,7 +324,7 @@ static const Button buttons[] = {
     * to control these separately (i.e. to retain the feature to move a tiled window
     * into a floating position).
     */
-    { ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 0} },
+    { ClkClientWin,         MODKEY,         Button1,        moveorplace,    { .i = 0 } },
     { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
     { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
     { ClkClientWin,         ControlMask|Mod1Mask,    Button1,        dragmfact,      {0} },
@@ -334,7 +334,8 @@ static const Button buttons[] = {
     { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
     { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
     { ClkTabBar,            0,              Button1,        focuswin,       {0} },
-    { ClkTabBar,            0,              Button1,        focuswin,       {0} },
+    { ClkTagBar,            0,              Button4,        shiftview,      { .i = -1 } },
+    { ClkTagBar,            0,              Button5,        shiftview,      { .i = +1 } },
     { ClkTabPrev,           0,              Button1,        movestack,      { .i = -1 } },
     { ClkTabNext,           0,              Button1,        movestack,      { .i = +1 } },
     { ClkTabClose,          0,              Button1,        killclient,     {0} },
