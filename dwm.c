@@ -1575,7 +1575,7 @@ void drawbar(Monitor *m) {
   if (w > bh_n) {
     if (m->sel) {
       /* fix overflow when window name is bigger than window width */
-      int mid = (m->ww - (int)TEXTW(m->sel->name)) / 2 - x;
+      int mid = title_center ? ((m->ww - (int)TEXTW(m->sel->name)) / 2 - x) : 0;
       /* make sure name will not overlap on tags even when it is very long */
       mid = mid >= lrpad / 2 ? mid : lrpad / 2;
       drw_setscheme(drw, scheme[m == selmon ? SchemeTitle : SchemeNorm]);
