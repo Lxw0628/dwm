@@ -13,7 +13,7 @@ picom --config ~/.config/picom/picom.conf &
 # picom --experimental-backends --config ~/.config/picom/picom.conf &
 
 pkill -f /home/lxw0628/.config/dwm/scripts/bar.sh
-sh ~/.config/dwm/scripts/bar.sh &
+sh /home/lxw0628/.config/dwm/scripts/bar.sh &
 # dwm_statusbar cron &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -22,7 +22,7 @@ fcitx5 -d &
 blueman-applet &
 pa-applet &
 nm-applet &
-birdtray &
+# birdtray &
 udiskie --tray &
 thunar --daemon &
 xsettingsd &
