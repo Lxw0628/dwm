@@ -27,6 +27,7 @@ udiskie --tray &
 thunar --daemon &
 xsettingsd &
 xfce4-power-manager &
+warpd &
 
 Snipaste &
 clash-verge &
