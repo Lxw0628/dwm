@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/statvfs.h>
 #include <time.h>
 #include <unistd.h>
 
@@ -9,22 +10,21 @@
 #define BAR_BUF_SIZE 256
 
 // Function to get disk usage
-void get_disk(char *output) {
-  FILE *fp = popen("df | sed -n '5p' | awk '{print $4}'", "r");
-  if (!fp) {
+
+void get_disk(const char *path, char *output) {
+  struct statvfs stat;
+
+  // 检查路径有效性并获取文件系统信息
+  if (statvfs(path, &stat) != 0) {
     snprintf(output, CMD_BUF_SIZE, "N/A");
     return;
   }
 
-  char buffer[CMD_BUF_SIZE];
-  if (fgets(buffer, CMD_BUF_SIZE, fp)) {
-    long disk_free_kb = atol(buffer);
-    float disk_free_gb = disk_free_kb / 1024.0 / 1024.0;
-    snprintf(output, CMD_BUF_SIZE, "%.2f GB", disk_free_gb);
-  } else {
-    snprintf(output, CMD_BUF_SIZE, "N/A");
-  }
-  pclose(fp);
+  // 计算可用空间 (以 GB 为单位)
+  unsigned long long disk_free_kb = stat.f_bavail * stat.f_frsize / 1024;
+  float disk_free_gb = disk_free_kb / 1024.0 / 1024.0;
+
+  snprintf(output, CMD_BUF_SIZE, "%.2f GB", disk_free_gb);
 }
 
 // Function to get CPU usage
@@ -98,7 +98,7 @@ int main() {
   char status[BAR_BUF_SIZE];
 
   while (1) {
-    get_disk(disk);
+    get_disk("/", disk);
     get_cpu(cpu);
     get_memory(mem);
     get_time(time);
