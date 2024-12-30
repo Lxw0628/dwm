@@ -12,9 +12,8 @@ feh --bg-fill --no-fehbg ~/Pictures/wallpapers/catppuccin/mocha.png
 picom --config ~/.config/picom/picom.conf &
 # picom --experimental-backends --config ~/.config/picom/picom.conf &
 
-pkill -f /home/lxw0628/.config/dwm/scripts/bar.sh
-sh /home/lxw0628/.config/dwm/scripts/bar.sh &
-# dwm_statusbar cron &
+pkill dwm_statusbar
+dwm_statusbar &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/bin/dunst &
