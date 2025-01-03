@@ -104,10 +104,10 @@ int main() {
     get_time(time);
 
     snprintf(status, BAR_BUF_SIZE,
-             "^c#cba6f7^Disk: ^c#cdd6f4^%s "
-             "^c#cba6f7^CPU: ^c#cdd6f4^%s "
-             "^c#cba6f7^Mem: ^c#cdd6f4^%s "
-             "^c#cba6f7^%s",
+             "^c#f5c2e7^Disk: ^c#cdd6f4^%s "
+             "^c#f5c2e7^CPU: ^c#cdd6f4^%s "
+             "^c#f5c2e7^Mem: ^c#cdd6f4^%s "
+             "^c#f5c2e7^%s",
              disk, cpu, mem, time);
     set_status(status);
 
