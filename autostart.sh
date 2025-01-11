@@ -8,7 +8,8 @@ numlockx on
 ulimit -n 4096
 xrdb merge ~/.Xresources
 xset r rate 200 50
-feh --bg-fill --no-fehbg ~/Pictures/wallpapers/catppuccin/mocha.png
+# 设置默认壁纸
+"$HOME"/Scripts/wallpapers.sh "default"
 picom --config ~/.config/picom/picom.conf &
 # picom --experimental-backends --config ~/.config/picom/picom.conf &
 
