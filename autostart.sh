@@ -9,7 +9,7 @@ ulimit -n 4096
 xrdb merge ~/.Xresources
 xset r rate 200 50
 # 设置默认壁纸
-"$HOME"/Scripts/wallpapers.sh "default"
+"$HOME/Scripts/wallpapers.sh" "autochange"
 picom --config ~/.config/picom/picom.conf &
 # picom --experimental-backends --config ~/.config/picom/picom.conf &
 
