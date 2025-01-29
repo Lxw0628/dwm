@@ -32,7 +32,7 @@ static const unsigned int gappih         = 4;  /* horiz inner gap between window
 static const unsigned int gappiv         = 4;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 4;  /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov         = 4;  /* vert outer gap between windows and screen edge */
-static const int smartgaps_fact          = 0;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
 static const char autostartblocksh[]     = "autostart_blocking.sh";
@@ -336,8 +336,8 @@ static const int color_ptrs[][ColCount] = {
 #include "themes/catppuccin.h"
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
-  [SchemeNorm]         = { black,            black,            black,                normfloatcolor },
-	[SchemeSel]          = { black,            peach,            blue,                 selfloatcolor },
+  [SchemeNorm]         = { text,             black,            black,                normfloatcolor },
+	[SchemeSel]          = { text,             peach,            blue,                 selfloatcolor },
 	[SchemeTitleNorm]    = { text,             black,            black,                titlenormfloatcolor },
 	[SchemeTitleSel]     = { pink,             black,            black,                titleselfloatcolor },
 	[SchemeTagsNorm]     = { text,             black,            black,                tagsnormfloatcolor },
@@ -733,7 +733,6 @@ static const Layout layouts[] = {
 	#if TILE_LAYOUT
 	{ "[]=",      tile },    /* first entry is default */
 	#endif
-	{ "><>",      NULL },    /* no layout function means floating behavior */
 	#if MONOCLE_LAYOUT
 	{ "[M]",      monocle },
 	#endif
@@ -773,6 +772,7 @@ static const Layout layouts[] = {
 	#if NROWGRID_LAYOUT
 	{ "###",      nrowgrid },
 	#endif
+	{ "><>",      NULL },    /* no layout function means floating behavior */
 };
 #endif // FLEXTILE_DELUXE_LAYOUT
 
