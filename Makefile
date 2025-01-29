@@ -11,7 +11,7 @@ OBJ = ${SRC:.c=.o}
 ifdef YAJLLIBS
 all: dwm dwm-msg
 else
-all: dwm
+all: dwm dwm_statusbar
 endif
 
 .c.o:
@@ -27,6 +27,9 @@ patches.h:
 
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
+
+dwm_statusbar: ./statusbar/statusbar.c
+	${CC} -o $@ $< ${LDFLAGS}
 
 ifdef YAJLLIBS
 dwm-msg:
@@ -48,11 +51,13 @@ dist: clean
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm ${DESTDIR}${PREFIX}/bin
+	cp -f dwm_statusbar ${DESTDIR}${PREFIX}/bin
 ifdef YAJLLIBS
 	cp -f dwm-msg ${DESTDIR}${PREFIX}/bin
 endif
 	#cp -f patch/dwmc ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
+	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm_statusbar
 ifdef YAJLLIBS
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-msg
 endif
@@ -66,6 +71,7 @@ endif
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1\
+		${DESTDIR}${PREFIX}/bin/dwm_statusbar\
 		${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop
 
 .PHONY: all clean dist install uninstall
