@@ -1333,8 +1333,8 @@ static const Key keys[] = {
   { MODKEY|ShiftMask,             XK_d,          spawn,                  SHCMD("$HOME/Scripts/dunst/toggle_dunst.sh")},
   { MODKEY,                       XK_e,          spawn,                  {.v = thunarcmd}},
 
-  { MODKEY|ControlMask,           XK_j,          focussame,              {.i = +1 } }, // focussame 函数在util.c内
-  { MODKEY|ControlMask,           XK_k,          focussame,              {.i = -1 } },
+  { MODKEY|ControlMask,           XK_k,          focussame,              {.i = +1 } }, // focussame 函数在util.c内
+  { MODKEY|ControlMask,           XK_j,          focussame,              {.i = -1 } },
 };
 
 #if KEYMODES_PATCH
