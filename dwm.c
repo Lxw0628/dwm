@@ -75,7 +75,7 @@
 #define Button7                 7
 #define Button8                 8
 #define Button9                 9
-#define NUMTAGS                 9
+#define NUMTAGS                 10
 #define NUMVIEWHIST             NUMTAGS
 #define BARRULES                20
 #if TAB_PATCH
@@ -755,6 +755,9 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
+static void focussame(const Arg *arg);
+static Window lastfocusedwin = None;
+static void restart(const Arg *arg);
 
 /* bar functions */
 
@@ -2229,6 +2232,75 @@ focusstack(const Arg *arg)
 	}
 }
 #endif // STACKER_PATCH
+
+void
+focussame(const Arg *arg) {
+  Client *c;
+  XClassHint ch = {NULL, NULL};
+  char *class_name = NULL;
+  int direction = arg->i;
+
+  if (!selmon->sel)
+    return;
+
+  if (!XGetClassHint(dpy, selmon->sel->win, &ch))
+    return;
+  class_name = ch.res_class;
+
+  Client *clients[32];
+  int num_clients = 0;
+
+  // 遍历当前 monitor 的所有 client，不受工作区限制
+  for (c = selmon->clients; c && num_clients < 32; c = c->next) {
+    if (XGetClassHint(dpy, c->win, &ch)) {
+      if (strcmp(class_name, ch.res_class) == 0)
+        clients[num_clients++] = c;
+      XFree(ch.res_class);
+      XFree(ch.res_name);
+    }
+  }
+
+  Client *target_client = NULL;
+  if (direction == +1) {
+    for (int i = 0; i < num_clients; ++i) {
+      if (clients[i]->win == lastfocusedwin) {
+        target_client = clients[(i + 1) % num_clients];
+        break;
+      }
+    }
+    if (!target_client)
+      target_client = clients[0];
+  } else if (direction == -1) {
+    for (int i = 0; i < num_clients; ++i) {
+      if (clients[i]->win == lastfocusedwin) {
+        target_client = clients[(i - 1 + num_clients) % num_clients];
+        break;
+      }
+    }
+    if (!target_client)
+      target_client = clients[num_clients - 1];
+  }
+
+  // 如果找到目标 client
+  if (target_client) {
+    // 切换到目标 client 所在的工作区
+    unsigned int target_tag = target_client->tags;
+    if (!(selmon->tagset[selmon->seltags] & target_tag)) {
+      for (int i = 0; i < NUMTAGS; i++) {
+        if (target_tag & (1 << i)) {
+          const Arg view_arg = {.ui = 1 << i};
+          view(&view_arg);
+          break;
+        }
+      }
+    }
+
+    // 然后聚焦到目标窗口
+    focus(target_client);
+    restack(selmon);
+    lastfocusedwin = target_client->win;
+  }
+}
 
 Atom
 getatomprop(Client *c, Atom prop, Atom req)
@@ -5288,6 +5360,12 @@ zoom(const Arg *arg)
 		return;
 	pop(c);
 	#endif // ZOOMSWAP_PATCH
+}
+
+void
+restart(const Arg *arg)
+{
+  running = 0;
 }
 
 int
