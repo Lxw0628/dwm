@@ -22,4 +22,22 @@
 
 - [layoutmenu](https://dwm.suckless.org/patches/layoutmenu/)
 
-- 
+### layout
+
+- [bottomstack](https://dwm.suckless.org/patches/bottomstack/)
+
+- [Centered master layout](https://dwm.suckless.org/patches/centeredmaster/)
+
+- [Columns](https://dwm.suckless.org/patches/columns/)
+
+- [Deck layout](https://dwm.suckless.org/patches/deck/)
+
+- [Fibonacci dwindle layout](https://dwm.suckless.org/patches/fibonacci/)
+
+- [Gappless grid layout](https://dwm.suckless.org/patches/gaplessgrid/)
+
+- [Gridmode (grid) layout](https://dwm.suckless.org/patches/gridmode/)
+
+- [Horizontal grid (horizgrid) layout](https://dwm.suckless.org/patches/horizgrid/)
+
+- [Grid layout where nmaster controls the number of rows](https://dwm.suckless.org/patches/nrowgrid/)
