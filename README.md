@@ -19,3 +19,7 @@
 - [status2d](https://dwm.suckless.org/patches/status2d/)
 
   - allows colors and rectangle drawing in the dwm status bar
+
+- [layoutmenu](https://dwm.suckless.org/patches/layoutmenu/)
+
+- 
