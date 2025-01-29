@@ -9,7 +9,7 @@
 static const unsigned int borderpx       = 0;   /* border pixel of windows */
 static const int corner_radius           = 10;
 #else
-static const unsigned int borderpx       = 1;   /* border pixel of windows */
+static const unsigned int borderpx       = 0;   /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 #if BAR_BORDER_PATCH
 /* This allows the bar border size to be explicitly set separately from borderpx.
@@ -418,7 +418,7 @@ static const char *const autostart[] = {
 #endif // COOL_AUTOSTART_PATCH
 
 #if RENAMED_SCRATCHPADS_PATCH
-static const char *scratchpadcmd[] = {"s", "st", "-n", "spterm", NULL};
+static const char *scratchpadcmd[] = {"s", "kitty", "--name", "spterm", NULL};
 #elif SCRATCHPADS_PATCH
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 static Sp scratchpads[] = {
@@ -1040,7 +1040,7 @@ static const Key keys[] = {
 	#if ALT_TAB_PATCH
 	{ AltMask,                     XK_Tab,        alttabstart,            {0} },
 	#else
-	{ MODKEY,                       XK_Tab,        view,                   {0} },
+	{ AltMask,                       XK_Tab,        view,                   {0} },
 	#endif // ALT_TAB_PATCH
 	#if SHIFTTAG_PATCH
 	{ MODKEY|ShiftMask,             XK_Left,       shifttag,               { .i = -1 } }, // note keybinding conflict with focusadjacenttag tagtoleft

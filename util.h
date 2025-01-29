@@ -17,4 +17,4 @@
 
 void die(const char *fmt, ...);
 void *ecalloc(size_t nmemb, size_t size);
-
+unsigned int get_tag_bit_position(unsigned int tags);

@@ -452,7 +452,7 @@
 /* Adds a window task switcher toggled using alt-tab.
  * https://dwm.suckless.org/patches/alt-tab/
  */
-#define ALT_TAB_PATCH 1
+#define ALT_TAB_PATCH 0
 
 /* All floating windows are centered, like the center patch, but without a rule.
  * The center patch takes precedence over this patch.
@@ -1218,7 +1218,7 @@
  * keyboard shortcuts.
  * https://dwm.suckless.org/patches/swaptags/
  */
-#define SWAPTAGS_PATCH 0
+#define SWAPTAGS_PATCH 1
 
 /* Switch focus between the master and stack columns using a single keybinding.
  * https://dwm.suckless.org/patches/switchcol/
@@ -1524,3 +1524,9 @@
  * This can be optionally disabled in favour of other layouts.
  */
 #define MONOCLE_LAYOUT 1
+
+/* 切换窗口动画
+ *
+ * */
+#define SHOWHIDEANIMATION 1
+

@@ -4130,7 +4130,23 @@ showhide(Client *c)
 		#endif // RENAMED_SCRATCHPADS_AUTO_HIDE_PATCH
 		/* hide clients bottom up */
 		showhide(c->snext);
+    #if SHOWHIDEANIMATION
+    // 判断tags是不是2的次方根,从而判断窗口是不是只是属于一个tag
+    unsigned int c_is_one_tag = 1;
+    if (c->tags & (c->tags - 1)) { // 去掉一个1，判断是否为0
+      c_is_one_tag = 0;
+    }
+    // 通过get_tag_bit_position 解析tags,判断要移动的窗口属于哪个tag
+    // 如果要移动的窗口只属于一个tag而且他在当前监视器所在tag的右边,就往右边隐藏
+    if (c_is_one_tag == 1 &&
+        get_tag_bit_position(c->tags) > c->mon->pertag->curtag) {
+      XMoveWindow(dpy, c->win, c->mon->mx + c->mon->mw, c->y);
+    } else {
+      XMoveWindow(dpy, c->win, WIDTH(c) * -1.0, c->y);
+    }
+    #else
 		XMoveWindow(dpy, c->win, WIDTH(c) * -2, c->y);
+    #endif
 	}
 }
 
