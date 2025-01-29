@@ -332,14 +332,16 @@ static const int color_ptrs[][ColCount] = {
 };
 #endif // BAR_VTCOLORS_PATCH
 
+// theme
+#include "themes/catppuccin.h"
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
-	[SchemeNorm]         = { normfgcolor,      normbgcolor,      normbordercolor,      normfloatcolor },
-	[SchemeSel]          = { selfgcolor,       selbgcolor,       selbordercolor,       selfloatcolor },
-	[SchemeTitleNorm]    = { titlenormfgcolor, titlenormbgcolor, titlenormbordercolor, titlenormfloatcolor },
-	[SchemeTitleSel]     = { titleselfgcolor,  titleselbgcolor,  titleselbordercolor,  titleselfloatcolor },
-	[SchemeTagsNorm]     = { tagsnormfgcolor,  tagsnormbgcolor,  tagsnormbordercolor,  tagsnormfloatcolor },
-	[SchemeTagsSel]      = { tagsselfgcolor,   tagsselbgcolor,   tagsselbordercolor,   tagsselfloatcolor },
+  [SchemeNorm]         = { gray3,            black,            gray2,                normfloatcolor },
+	[SchemeSel]          = { gray4,            blue,             blue,                 selfloatcolor },
+	[SchemeTitleNorm]    = { text,             black,            black,                titlenormfloatcolor },
+	[SchemeTitleSel]     = { pink,             black,            titleselbordercolor,  titleselfloatcolor },
+	[SchemeTagsNorm]     = { text,             black,            tagsnormbordercolor,  tagsnormfloatcolor },
+	[SchemeTagsSel]      = { pink,             black,            tagsselbordercolor,   tagsselfloatcolor },
 	[SchemeHidNorm]      = { hidnormfgcolor,   hidnormbgcolor,   c000000,              c000000 },
 	[SchemeHidSel]       = { hidselfgcolor,    hidselbgcolor,    c000000,              c000000 },
 	[SchemeUrg]          = { urgfgcolor,       urgbgcolor,       urgbordercolor,       urgfloatcolor },
