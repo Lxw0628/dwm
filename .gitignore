@@ -1,0 +1,8 @@
+dwm 
+dwm_statusbar
+config.h 
+*.o
+*.orig
+*.rej
+.vscode/
+.idea/
