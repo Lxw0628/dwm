@@ -22,6 +22,12 @@
 
 - [layoutmenu](https://dwm.suckless.org/patches/layoutmenu/)
 
+- [nodmenu](https://dwm.suckless.org/patches/nodmenu/)
+
+  - enable modifying dmenu in config.def.h which resulted previously in a compilation error because two lines of code hardcode dmenu into dwm
+  - allows complete removal of dmenu, should you want to do that
+  - NB: this patch was removed from the patches listing on the suckless page due to it's simplicity
+
 ### layout
 
 - [bottomstack](https://dwm.suckless.org/patches/bottomstack/)
