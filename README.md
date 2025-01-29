@@ -28,6 +28,20 @@
   - allows complete removal of dmenu, should you want to do that
   - NB: this patch was removed from the patches listing on the suckless page due to it's simplicity
 
+- [statusbutton](https://dwm.suckless.org/patches/statusbutton/)
+
+  - adds a clickable button to the left hand side of the statusbar
+
+- [statuscmd](https://dwm.suckless.org/patches/statuscmd/)
+
+  - adds the ability to execute shell commands based on the mouse button and position when clicking the status bar
+
+- [toggletopbar](https://dwm.suckless.org/patches/toggletopbar/)
+
+  - allows for the bar position (top or bottom) to be toggled during runtime
+
+
+
 ### layout
 
 - [bottomstack](https://dwm.suckless.org/patches/bottomstack/)
