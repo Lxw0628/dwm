@@ -28,10 +28,10 @@ static const int scalepreview            = 4;        /* Tag preview scaling */
 static int nomodbuttons                  = 1;   /* allow client mouse button bindings that have no modifier */
 #endif // NO_MOD_BUTTONS_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih         = 8;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 8;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 8;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 8;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappih         = 4;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 4;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 4;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 4;  /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact          = 0;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
@@ -63,8 +63,8 @@ static const int toptab                  = False;               /* False means b
 static const int bar_height              = 24;   /* 0 means derive from font, >= 1 explicit height */
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
-static const int vertpad                 = 8;  /* vertical padding of bar */
-static const int sidepad                 = 8;  /* horizontal padding of bar */
+static const int vertpad                 = 4;  /* vertical padding of bar */
+static const int sidepad                 = 4;  /* horizontal padding of bar */
 #endif // BAR_PADDING_PATCH
 #if BAR_WINICON_PATCH
 #define ICONSIZE bar_height ? (bar_height - 4) : (bh - 4)    /* icon size, default is 20 */
@@ -336,14 +336,14 @@ static const int color_ptrs[][ColCount] = {
 #include "themes/catppuccin.h"
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
-  [SchemeNorm]         = { gray3,            black,            gray2,                normfloatcolor },
-	[SchemeSel]          = { gray4,            blue,             blue,                 selfloatcolor },
+  [SchemeNorm]         = { black,            black,            black,                normfloatcolor },
+	[SchemeSel]          = { black,            peach,            blue,                 selfloatcolor },
 	[SchemeTitleNorm]    = { text,             black,            black,                titlenormfloatcolor },
-	[SchemeTitleSel]     = { pink,             black,            titleselbordercolor,  titleselfloatcolor },
-	[SchemeTagsNorm]     = { text,             black,            tagsnormbordercolor,  tagsnormfloatcolor },
-	[SchemeTagsSel]      = { pink,             black,            tagsselbordercolor,   tagsselfloatcolor },
-	[SchemeHidNorm]      = { hidnormfgcolor,   hidnormbgcolor,   c000000,              c000000 },
-	[SchemeHidSel]       = { hidselfgcolor,    hidselbgcolor,    c000000,              c000000 },
+	[SchemeTitleSel]     = { pink,             black,            black,                titleselfloatcolor },
+	[SchemeTagsNorm]     = { text,             black,            black,                tagsnormfloatcolor },
+	[SchemeTagsSel]      = { pink,             black,            black,                tagsselfloatcolor },
+	[SchemeHidNorm]      = { hidnormfgcolor,   black,            black,                c000000 },
+	[SchemeHidSel]       = { hidselfgcolor,    black,            black,                c000000 },
 	[SchemeUrg]          = { urgfgcolor,       urgbgcolor,       urgbordercolor,       urgfloatcolor },
 	#if RENAMED_SCRATCHPADS_PATCH
 	[SchemeScratchSel]  = { scratchselfgcolor, scratchselbgcolor, scratchselbordercolor, scratchselfloatcolor },
@@ -832,7 +832,7 @@ static const char *xkb_layouts[]  = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
-	{ MODKEY|AltMask|ShiftMask,    KEY,      swaptags,       {.ui = 1 << TAG} },
+	{ MODKEY|AltMask|ControlMask,   KEY,      swaptags,       {.ui = 1 << TAG} },
 #elif TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
