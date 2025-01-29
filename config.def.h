@@ -38,7 +38,7 @@ static const int smartgaps_fact          = 1;   /* gap factor when there is only
 static const char autostartblocksh[]     = "autostart_blocking.sh";
 static const char autostartsh[]          = "autostart.sh";
 static const char dwmdir[]               = "dwm";
-static const char localshare[]           = ".local/share";
+static const char localshare[]           = ".config";
 #endif // AUTOSTART_PATCH
 #if BAR_ANYBAR_PATCH
 static const int usealtbar               = 1;        /* 1 means use non-dwm status bar */
