@@ -39,6 +39,7 @@ endif
 clean:
 	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
 	rm -f dwm-msg
+	rm -f dwm_statusbar config.h patches.h *.o
 
 dist: clean
 	mkdir -p dwm-${VERSION}
