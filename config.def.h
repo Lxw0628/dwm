@@ -101,7 +101,7 @@ static const int vertpadbar              = 0;   /* vertical padding for statusba
 static const char buttonbar[]            = "<O>";
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 0;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 #endif // BAR_SYSTRAY_PATCH
 #if BAR_TAGLABELS_PATCH
@@ -338,8 +338,8 @@ static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
   [SchemeNorm]         = { text,             black,            black,                normfloatcolor },
 	[SchemeSel]          = { text,             peach,            blue,                 selfloatcolor },
-	[SchemeTitleNorm]    = { text,             black,            black,                titlenormfloatcolor },
-	[SchemeTitleSel]     = { pink,             black,            black,                titleselfloatcolor },
+	[SchemeTitleNorm]    = { gray3,            black,            black,                titlenormfloatcolor },
+	[SchemeTitleSel]     = { text,             black,            black,                titleselfloatcolor },
 	[SchemeTagsNorm]     = { text,             black,            black,                tagsnormfloatcolor },
 	[SchemeTagsSel]      = { pink,             black,            black,                tagsselfloatcolor },
 	[SchemeHidNorm]      = { hidnormfgcolor,   black,            black,                c000000 },
@@ -1169,8 +1169,8 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_l,          viewtoright,            {0} }, // note keybinding conflict with focusdir
 	// { MODKEY|ShiftMask,             XK_Left,       tagtoleft,              {0} }, // note keybinding conflict with shifttag
 	// { MODKEY|ShiftMask,             XK_Right,      tagtoright,             {0} }, // note keybinding conflict with shifttag
-	{ MODKEY|ControlMask|ShiftMask,           XK_Left,       tagandviewtoleft,       {0} }, // note keybinding conflict with placedir
-	{ MODKEY|ControlMask|ShiftMask,           XK_Right,      tagandviewtoright,      {0} }, // note keybinding conflict with placedir
+	{ MODKEY|ControlMask|ShiftMask,    XK_h,          tagandviewtoleft,       {0} }, // note keybinding conflict with placedir
+	{ MODKEY|ControlMask|ShiftMask,    XK_l,          tagandviewtoright,      {0} }, // note keybinding conflict with placedir
 	#endif // FOCUSADJACENTTAG_PATCH
 	#if TAGALL_PATCH
 	{ MODKEY|ShiftMask,             XK_F1,         tagall,                 {.v = "F1"} },

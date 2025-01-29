@@ -1,3 +1,4 @@
+#include <stdlib.h>
 void
 layoutmenu(const Arg *arg) {
 	FILE *p;
