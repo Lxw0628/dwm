@@ -1382,7 +1382,7 @@
  * Most gaps patches tries to avoid gaps on the monocle layout, as it is often used as a
  * fullscreen mode, hence this is enabled separately from the main vanitygaps patch.
  */
-#define VANITYGAPS_MONOCLE_PATCH 0
+#define VANITYGAPS_MONOCLE_PATCH 1
 
 /* By default MOD+Tab will take the user back to the previous tag only. If the user keeps
  * using MOD+Tab then the view will switch back and forth between the current and previous tag.
@@ -1530,3 +1530,7 @@
  * */
 #define SHOWHIDEANIMATION 1
 
+/* 切换TAG时跳过空标签
+ *
+ * */
+#define VIEWTOTAGIGNOREEMPTY 1
