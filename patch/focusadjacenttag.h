@@ -5,3 +5,6 @@ static void viewtoright(const Arg *arg);
 static void tagandviewtoleft(const Arg *arg);
 static void tagandviewtoright(const Arg *arg);
 
+#if VIEWTOTAGIGNOREEMPTY
+static int taghasclient(int tag);
+#endif
