@@ -63,8 +63,8 @@ static const int toptab                  = False;               /* False means b
 static const int bar_height              = 24;   /* 0 means derive from font, >= 1 explicit height */
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
-static const int vertpad                 = 4;  /* vertical padding of bar */
-static const int sidepad                 = 4;  /* horizontal padding of bar */
+static const int vertpad                 = 0;  /* vertical padding of bar */
+static const int sidepad                 = 0;  /* horizontal padding of bar */
 #endif // BAR_PADDING_PATCH
 #if BAR_WINICON_PATCH
 #define ICONSIZE bar_height ? (bar_height - 4) : (bh - 4)    /* icon size, default is 20 */
@@ -94,7 +94,7 @@ static const int statusmon               = 0;
 static const int statusmon               = 'A';
 #endif // BAR_STATUSALLMONS_PATCH | BAR_STATICSTATUS_PATCH
 #if BAR_STATUSPADDING_PATCH
-static const int horizpadbar             = 2;   /* horizontal padding for statusbar */
+static const int horizpadbar             = 0;   /* horizontal padding for statusbar */
 static const int vertpadbar              = 0;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
@@ -337,7 +337,7 @@ static const int color_ptrs[][ColCount] = {
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
   [SchemeNorm]         = { text,             black,            black,                normfloatcolor },
-	[SchemeSel]          = { text,             peach,            blue,                 selfloatcolor },
+	[SchemeSel]          = { text,             black,            blue,                 selfloatcolor },
 	[SchemeTitleNorm]    = { gray3,            black,            black,                titlenormfloatcolor },
 	[SchemeTitleSel]     = { text,             black,            black,                titleselfloatcolor },
 	[SchemeTagsNorm]     = { text,             black,            black,                tagsnormfloatcolor },
@@ -414,7 +414,30 @@ static const Launcher launchers[] = {
 
 #if COOL_AUTOSTART_PATCH
 static const char *const autostart[] = {
-	"st", NULL,
+  "xset", "-b", "off", NULL,
+  "xrandr", "--output", "HDMI-2", "--mode", "1920x1080", "--rate", "120.00", "--output", "eDP-1", "--off", NULL,
+  "numlockx", "on", NULL,
+  "ulimit" "-n", "4096", NULL,
+  "xrdb", "merge", "~/.Xresources", NULL,
+  "xset", "r", "rate", "200", "50", NULL,
+  "sh", "-c", "~/Scripts/wallpapers.sh", "autochange", NULL,
+  "picom", "--config", "~/.config/picom/picom.conf", NULL,
+  "dwm_statusbar", NULL,
+  "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
+  "/usr/bin/dunst", NULL,
+  "fcitx5", "-d", NULL,
+  "blueman-applet", NULL,
+  "pa-applet", NULL,
+  "nm-applet", NULL,
+  "udiskie," "--tray", NULL,
+  "thunar", "--daemon", NULL,
+  "xsettingsd", NULL,
+  "xfce4-power-manager", NULL,
+  "warpd", NULL,
+  //
+  "Snipaste", NULL,
+  "clash-verge", NULL,
+  "otd-daemon", NULL,
 	NULL /* terminate */
 };
 #endif // COOL_AUTOSTART_PATCH
