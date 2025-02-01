@@ -1,63 +1,141 @@
-### Patches included
+Fork from [bakkeby/dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch)
 
-- [autostart](https://dwm.suckless.org/patches/autostart/)
+## Enabled Patches
 
-  - makes dwm run ~/.dwm/autostart_blocking.sh and ~/.dwm/autostart.sh & on startup
+> The following content is set to 1 in the `patches.def.h` file.
 
-- [systray](https://dwm.suckless.org/patches/systray/)
+BAR_AWESOMEBAR_PATCH
 
-  - adds system tray in the status bar
+BAR_LAYOUTMENU_PATCH
 
-- [awesomebar](https://dwm.suckless.org/patches/awesomebar/)
+BAR_LTSYMBOL_PATCH
 
-  - enhanced taskbar that allows focus / hiding / unhiding of windows by clicking on the status bar
+BAR_STATUS_PATCH
 
-- [alpha](https://dwm.suckless.org/patches/alpha/)
+BAR_STATUSCMD_PATCH
 
-  - adds transparency for the status bar
+BAR_STATUS2D_PATCH
 
-- [status2d](https://dwm.suckless.org/patches/status2d/)
+BAR_STATUS2D_NO_ALPHA_PATCH
 
-  - allows colors and rectangle drawing in the dwm status bar
+BAR_SYSTRAY_PATCH
 
-- [layoutmenu](https://dwm.suckless.org/patches/layoutmenu/)
+BAR_TAGS_PATCH
 
-- [nodmenu](https://dwm.suckless.org/patches/nodmenu/)
+BAR_UNDERLINETAGS_PATCH
 
-  - enable modifying dmenu in config.def.h which resulted previously in a compilation error because two lines of code hardcode dmenu into dwm
-  - allows complete removal of dmenu, should you want to do that
-  - NB: this patch was removed from the patches listing on the suckless page due to it's simplicity
+BAR_WINICON_PATCH
 
-- [statusbutton](https://dwm.suckless.org/patches/statusbutton/)
+BAR_WINTITLE_PATCH
 
-  - adds a clickable button to the left hand side of the statusbar
+BAR_CENTEREDWINDOWNAME_PATCH
 
-- [statuscmd](https://dwm.suckless.org/patches/statuscmd/)
+BAR_EWMHTAGS_PATCH
 
-  - adds the ability to execute shell commands based on the mouse button and position when clicking the status bar
+BAR_HEIGHT_PATCH
 
-- [toggletopbar](https://dwm.suckless.org/patches/toggletopbar/)
+BAR_HIDEVACANTTAGS_PATCH
 
-  - allows for the bar position (top or bottom) to be toggled during runtime
+BAR_PADDING_PATCH
 
+BAR_PADDING_VANITYGAPS_PATCH
 
+BAR_PADDING_SMART_PATCH
 
-### layout
+BAR_STATUSPADDING_PATCH
 
-- [bottomstack](https://dwm.suckless.org/patches/bottomstack/)
+ALWAYSCENTER_PATCH
 
-- [Centered master layout](https://dwm.suckless.org/patches/centeredmaster/)
+AUTOSTART_PATCH
 
-- [Columns](https://dwm.suckless.org/patches/columns/)
+BORDER_RULE_PATCH
 
-- [Deck layout](https://dwm.suckless.org/patches/deck/)
+CENTER_PATCH
 
-- [Fibonacci dwindle layout](https://dwm.suckless.org/patches/fibonacci/)
+CENTER_TRANSIENT_WINDOWS_BY_PARENT_PATCH
 
-- [Gappless grid layout](https://dwm.suckless.org/patches/gaplessgrid/)
+CFACTS_PATCH
 
-- [Gridmode (grid) layout](https://dwm.suckless.org/patches/gridmode/)
+CYCLELAYOUTS_PATCH
 
-- [Horizontal grid (horizgrid) layout](https://dwm.suckless.org/patches/horizgrid/)
+DECORATION_HINTS_PATCH
 
-- [Grid layout where nmaster controls the number of rows](https://dwm.suckless.org/patches/nrowgrid/)
+DO_NOT_DIE_ON_COLOR_ALLOCATION_FAILURE_PATCH
+
+DRAGCFACT_PATCH
+
+FAKEFULLSCREEN_CLIENT_PATCH
+
+FOCUSADJACENTTAG_PATCH
+
+FOCUSONNETACTIVE_PATCH
+
+FULLSCREEN_PATCH
+
+MOVERESIZE_PATCH
+
+MOVESTACK_PATCH
+
+NODMENU_PATCH
+
+PERTAG_PATCH
+
+PERTAG_VANITYGAPS_PATCH
+
+PERTAGBAR_PATCH
+
+PLACEDIR_PATCH
+
+RENAMED_SCRATCHPADS_PATCH
+
+RESIZEPOINT_PATCH
+
+SEAMLESS_RESTART_PATCH
+
+SETBORDERPX_PATCH
+
+STICKY_PATCH
+
+SWAPTAGS_PATCH
+
+TAGSWAPMON_PATCH
+
+TOGGLEFULLSCREEN_PATCH
+
+TOGGLETOPBAR_PATCH
+
+VANITYGAPS_PATCH
+
+VANITYGAPS_MONOCLE_PATCH
+
+BSTACK_LAYOUT
+
+BSTACKHORIZ_LAYOUT
+
+CENTEREDMASTER_LAYOUT
+
+CENTEREDFLOATINGMASTER_LAYOUT
+
+COLUMNS_LAYOUT
+
+DECK_LAYOUT
+
+FIBONACCI_DWINDLE_LAYOUT
+
+FIBONACCI_SPIRAL_LAYOUT
+
+GAPPLESSGRID_LAYOUT
+
+GRIDMODE_LAYOUT
+
+HORIZGRID_LAYOUT
+
+NROWGRID_LAYOUT
+
+TILE_LAYOUT
+
+MONOCLE_LAYOUT
+
+## Additional Content
+
+To be added...
