@@ -540,6 +540,11 @@ static const Rule rules[] = {
 	#elif SCRATCHPADS_PATCH
 	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1, .iscentered = 1)
 	#endif // SCRATCHPADS_PATCH
+  RULE(.title = "保存文件", .isfloating = 1)      // 浏览器保存文件
+  RULE(.title = "图片查看器", .isfloating = 1)    // qq图片查看
+  RULE(.class = "wechat", .title = "预览", .isfloating = 1)      // 微信图片查看
+  RULE(.title = "图片预览", .isfloating = 1)      // 企业微信图片查看
+  RULE(.title = "Media viewer", .isfloating = 1)  // tg图片查看
 };
 
 #if MONITOR_RULES_PATCH
