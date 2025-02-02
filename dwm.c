@@ -2229,7 +2229,9 @@ focusstack(const Arg *arg)
 	if (c) {
 		focus(c);
 		restack(selmon);
+    #if CURSORCENTEREDWITHFOCUS
     XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w / 2, c->h / 2);
+    #endif
 	}
 }
 #endif // STACKER_PATCH

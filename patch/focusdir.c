@@ -61,6 +61,9 @@ focusdir(const Arg *arg)
 	if (f && f != s) {
 		focus(f);
 		restack(f->mon);
+    #if CURSORCENTEREDWITHFOCUS
+    XWarpPointer(dpy, None, f->win, 0, 0, 0, 0, f->w / 2, f->h / 2);
+    #endif
 	}
 }
 
