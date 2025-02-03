@@ -92,15 +92,26 @@ void update_status() {
   get_memory(mem);
   get_time(time);
 
+  // 分割时间为日期和时分秒部分
+  char *date_part = time;
+  char *time_part = "";
+  char *last_space = strrchr(time, ' '); // 查找最后一个空格
+  if (last_space) {
+    *last_space = '\0';         // 分割字符串
+    date_part = time;           // 前半部分（日期）
+    time_part = last_space + 1; // 后半部分（时分秒）
+  }
+
   snprintf(status, BAR_BUF_SIZE,
            " %s  %s%s "
            " %s  %s%s "
            " %s  %s%s "
-           " %s%s ",
+           " %s%s %s%s ",
            FOREGROUND_COLOR_ICON, FOREGROUND_COLOR_TEXT, disk,
            FOREGROUND_COLOR_ICON, FOREGROUND_COLOR_TEXT, cpu,
            FOREGROUND_COLOR_ICON, FOREGROUND_COLOR_TEXT, mem,
-           FOREGROUND_COLOR_ICON, time);
+           FOREGROUND_COLOR_ICON, date_part,
+           FOREGROUND_COLOR_TEXT, time_part);
 
   XStoreName(display, DefaultRootWindow(display), status);
   XFlush(display);
