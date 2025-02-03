@@ -35,7 +35,7 @@ picom --config ~/.config/picom/picom.conf &
 
 # 托盘程序（确保只启动一次）
 run_once nm-applet nm-applet
-run_once blueman-applet blueman-applet
+# run_once blueman-applet blueman-applet
 run_once pa-applet pa-applet
 
 # === 其他程序 ===
