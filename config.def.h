@@ -1186,8 +1186,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_backslash,  view,                   {.ui = ~SPTAGMASK } },
 	{ MODKEY|ShiftMask,             XK_backslash,  tag,                    {.ui = ~SPTAGMASK } },
 	#else
-	{ MODKEY,                       XK_backslash,  view,                   {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_backslash,  tag,                    {.ui = ~0 } },
+	{ MODKEY,                       XK_BackSpace,  view,                   {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_BackSpace,  tag,                    {.ui = ~0 } },
 	#endif // SCRATCHPAD_ALT_1_PATCH
 	{ MODKEY,                       XK_comma,      focusmon,               {.i = -1 } },
 	{ MODKEY,                       XK_period,     focusmon,               {.i = +1 } },
