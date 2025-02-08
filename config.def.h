@@ -60,14 +60,15 @@ static const int showtab                 = showtab_never;        /* Default tab 
 static const int toptab                  = False;               /* False means bottom tab bar */
 #endif // TAB_PATCH
 #if BAR_HEIGHT_PATCH
-static const int bar_height              = 24;   /* 0 means derive from font, >= 1 explicit height */
+static const int bar_height              = 36;   /* 0 means derive from font, >= 1 explicit height */
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
 static const int vertpad                 = 0;  /* vertical padding of bar */
 static const int sidepad                 = 0;  /* horizontal padding of bar */
 #endif // BAR_PADDING_PATCH
 #if BAR_WINICON_PATCH
-#define ICONSIZE bar_height ? (bar_height - 4) : (bh - 4)    /* icon size, default is 20 */
+// #define ICONSIZE bar_height ? (bar_height - 4) : (bh - 4)    /* icon size, default is 20 */
+#define ICONSIZE 20    /* icon size, default is 20 */
 #define ICONSPACING 5  /* space between icon and title */
 #endif // BAR_WINICON_PATCH
 #if FOCUSONCLICK_PATCH

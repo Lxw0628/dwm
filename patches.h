@@ -378,7 +378,7 @@
  * only one client on the monitor. Works well with vanitygaps and barpadding
  * patches.
  */
-#define BAR_PADDING_SMART_PATCH 1
+#define BAR_PADDING_SMART_PATCH 0
 
 /* This patch adds simple markup for status messages using pango markup.
  * This depends on the pango library v1.44 or greater.
@@ -1024,7 +1024,7 @@
  * will be restored.
  * https://dwm.suckless.org/patches/save_floats/
  */
-#define SAVEFLOATS_PATCH 0
+#define SAVEFLOATS_PATCH 1
 
 /* The scratchpad patch allows you to spawn or restore floating terminal windows.
  * It is typically useful when one need to do some short typing.
@@ -1436,7 +1436,7 @@
 /* Simple patch that allows floating windows to be zoomed into the master stack position.
  * https://www.reddit.com/r/suckless/comments/ie5fe3/zoomfloating_my_own_simple_original_patch/
  */
-#define ZOOMFLOATING_PATCH 0
+#define ZOOMFLOATING_PATCH 1
 
 /* The zoomswap patch allows a master and a stack window to swap places
  * rather than every window on the screen changing position.
