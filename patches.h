@@ -378,7 +378,7 @@
  * only one client on the monitor. Works well with vanitygaps and barpadding
  * patches.
  */
-#define BAR_PADDING_SMART_PATCH 0
+#define BAR_PADDING_SMART_PATCH 1
 
 /* This patch adds simple markup for status messages using pango markup.
  * This depends on the pango library v1.44 or greater.
@@ -893,7 +893,7 @@
  * https://github.com/szatanjl/dwm/commit/1529909466206016f2101457bbf37c67195714c8
  * https://dwm.suckless.org/patches/alpha/dwm-fixborders-6.2.diff
  */
-#define NO_TRANSPARENT_BORDERS_PATCH 0
+#define NO_TRANSPARENT_BORDERS_PATCH 1
 
 /* Port of InstantWM's on_empty_keys functionality allowing keybindings that apply only when
  * a tag is empty. An example use case is being able to launch applications with first hand
@@ -1436,7 +1436,7 @@
 /* Simple patch that allows floating windows to be zoomed into the master stack position.
  * https://www.reddit.com/r/suckless/comments/ie5fe3/zoomfloating_my_own_simple_original_patch/
  */
-#define ZOOMFLOATING_PATCH 1
+#define ZOOMFLOATING_PATCH 0
 
 /* The zoomswap patch allows a master and a stack window to swap places
  * rather than every window on the screen changing position.
