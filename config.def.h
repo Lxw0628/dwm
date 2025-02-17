@@ -338,7 +338,7 @@ static const int color_ptrs[][ColCount] = {
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
   [SchemeNorm]         = { text,             black,            black,                normfloatcolor },
-	[SchemeSel]          = { text,             black,            blue,                 selfloatcolor },
+	[SchemeSel]          = { text,             black,            yellow,               selfloatcolor },
 	[SchemeTitleNorm]    = { gray3,            black,            black,                titlenormfloatcolor },
 	[SchemeTitleSel]     = { text,             black,            black,                titleselfloatcolor },
 	[SchemeTagsNorm]     = { text,             black,            black,                tagsnormfloatcolor },
