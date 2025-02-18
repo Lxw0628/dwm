@@ -42,3 +42,6 @@ run_once pa-applet pa-applet
 run_once clash-verge clash-verge
 run_once Snipaste Snipaste
 run_once otd-daemon otd-daemon
+
+# === dwm-msg ===
+"$HOME/Scripts/dwm-msg.sh"
