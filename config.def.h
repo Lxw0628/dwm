@@ -1844,5 +1844,6 @@ static IPCCommand ipccommands[] = {
 	#if XRDB_PATCH && !BAR_VTCOLORS_PATCH
 	IPCCOMMAND( xrdb, 1, {ARG_TYPE_NONE} ),
 	#endif // XRDB_PATCH
+  IPCCOMMAND( toggleallgaps, 1, {ARG_TYPE_NONE} ),
 };
 #endif // IPC_PATCH

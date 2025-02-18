@@ -757,7 +757,10 @@ static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
 static void focussame(const Arg *arg);
 static Window lastfocusedwin = None;
+
 static void restart(const Arg *arg);
+static void toggleallgaps(const Arg *arg);
+
 
 /* bar functions */
 
@@ -5385,6 +5388,45 @@ void
 restart(const Arg *arg)
 {
   running = 0;
+}
+
+static void
+toggleallgaps(const Arg *arg)
+{
+    #if PERTAG_VANITYGAPS_PATCH && PERTAG_PATCH
+    // 遍历所有 tag
+    for (int i = 0; i < NUMTAGS; i++) {
+        selmon->pertag->enablegaps[i] = !selmon->pertag->enablegaps[i];
+    }
+    #elif PERMON_VANITYGAPS_PATCH
+    selmon->enablegaps = !selmon->enablegaps;
+    #else
+    enablegaps = !enablegaps;
+    #endif // PERTAG_VANITYGAPS_PATCH | PERMON_VANITYGAPS_PATCH
+
+    #if BAR_PADDING_VANITYGAPS_PATCH
+    #if PERMON_VANITYGAPS_PATCH
+    updatebarpos(selmon);
+    for (Bar *bar = selmon->bar; bar; bar = bar->next)
+        XMoveResizeWindow(dpy, bar->win, bar->bx, bar->by, bar->bw, bar->bh);
+    #else
+    for (Monitor *m = mons; m; m = m->next) {
+        updatebarpos(m);
+        for (Bar *bar = m->bar; bar; bar = bar->next)
+            XMoveResizeWindow(dpy, bar->win, bar->bx, bar->by, bar->bw, bar->bh);
+    }
+    #endif // PERMON_VANITYGAPS_PATCH
+
+    #if BAR_SYSTRAY_PATCH
+    drawbarwin(systray->bar);
+    #endif // BAR_SYSTRAY_PATCH
+    #endif // BAR_PADDING_VANITYGAPS_PATCH
+
+    #if (PERTAG_VANITYGAPS_PATCH && PERTAG_PATCH) || PERMON_VANITYGAPS_PATCH
+    arrange(selmon);
+    #else
+    arrange(NULL);
+    #endif // PERTAG_VANITYGAPS_PATCH | PERMON_VANITYGAPS_PATCH
 }
 
 int
