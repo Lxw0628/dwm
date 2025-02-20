@@ -5395,7 +5395,7 @@ toggleallgaps(const Arg *arg)
 {
     #if PERTAG_VANITYGAPS_PATCH && PERTAG_PATCH
     // 遍历所有 tag
-    for (int i = 0; i < NUMTAGS; i++) {
+    for (int i = 0; i <= NUMTAGS; i++) {
         selmon->pertag->enablegaps[i] = !selmon->pertag->enablegaps[i];
     }
     #elif PERMON_VANITYGAPS_PATCH
