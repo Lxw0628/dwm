@@ -39,7 +39,6 @@ run_once nm-applet nm-applet
 run_once pa-applet pa-applet
 
 # === 其他程序 ===
-run_once clash-verge clash-verge
 run_once Snipaste Snipaste
 run_once otd-daemon otd-daemon
 
