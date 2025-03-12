@@ -1467,6 +1467,8 @@ static const Button buttons[] = {
   #if MOUSEACTIONS_PATCH
   { ClkClientWin,         MODKEY,              Button4,        focusstack,     {.i = -1 } },
   { ClkClientWin,         MODKEY,              Button5,        focusstack,     {.i = +1 } },
+  { ClkClientWin,         MODKEY|ControlMask, Button4,        viewtoleft,     {0} },
+  { ClkClientWin,         MODKEY|ControlMask, Button5,        viewtoright,    {0} },
   { ClkTagBar,            0,                   Button4,        viewtoleft,     {0} },
   { ClkTagBar,            0,                   Button5,        viewtoright,    {0} },
   #endif

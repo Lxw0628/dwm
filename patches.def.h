@@ -1547,7 +1547,8 @@
  * Button4 -> 鼠标滚轮上
  * Button5 -> 鼠标滚轮下
  *
- * 1. ClkClientWin modkey+Button4/5 -> focusstack{.i=-1}/focusstack{.i=+1}
+ * 1. ClkClientWin MODKEY+Button4/5 -> focusstack{.i=-1}/focusstack{.i=+1}
+ * 1. ClkClientWin MODKEY+ControlMask+Button4/5 -> viewtoleft/viewtoright
  * 2. ClkTagBar Button4/5 -> viewtoleft/viewtoright
  * 3. ClkWinTitle Button4/5 -> focusstack{.i=-1}/focusstack{.i=+1}
  * */
