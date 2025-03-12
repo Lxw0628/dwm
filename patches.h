@@ -1538,7 +1538,7 @@
 /* 鼠标跟随焦点切换移动至窗口中心
  *
  * */
-#define CURSORCENTEREDWITHFOCUS 1
+#define CURSORCENTEREDWITHFOCUS 0
 
 /* Mouse actions
  * Button1 -> 鼠标左键
@@ -1550,6 +1550,6 @@
  * 1. ClkClientWin MODKEY+Button4/5 -> focusstack{.i=-1}/focusstack{.i=+1}
  * 1. ClkClientWin MODKEY+ControlMask+Button4/5 -> viewtoleft/viewtoright
  * 2. ClkTagBar Button4/5 -> viewtoleft/viewtoright
- * 3. ClkWinTitle Button4/5 -> focusstack{.i=-1}/focusstack{.i=+1}
+ * 3. ClkWinTitle Button4/5 -> focusstack{.i=-1}/focusstack{.i=+1} when CURSORCENTEREDWITHFOCUS is 0
  * */
 #define MOUSEACTIONS_PATCH 1
