@@ -1539,3 +1539,16 @@
  *
  * */
 #define CURSORCENTEREDWITHFOCUS 1
+
+/* Mouse actions
+ * Button1 -> 鼠标左键
+ * Button2 -> 鼠标中键
+ * Button3 -> 鼠标右键
+ * Button4 -> 鼠标滚轮上
+ * Button5 -> 鼠标滚轮下
+ *
+ * 1. ClkClientWin modkey+Button4/5 -> focusstack{.i=-1}/focusstack{.i=+1}
+ * 2. ClkTagBar Button4/5 -> viewtoleft/viewtoright
+ * 3. ClkWinTitle Button4/5 -> focusstack{.i=-1}/focusstack{.i=+1}
+ * */
+#define MOUSEACTIONS_PATCH 1

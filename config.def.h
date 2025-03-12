@@ -1464,6 +1464,12 @@ static const Button buttons[] = {
 	#if TAB_PATCH
 	{ ClkTabBar,            0,                   Button1,        focuswin,       {0} },
 	#endif // TAB_PATCH
+  #if MOUSEACTIONS_PATCH
+  { ClkClientWin,         MODKEY,              Button4,        focusstack,     {.i = -1 } },
+  { ClkClientWin,         MODKEY,              Button5,        focusstack,     {.i = +1 } },
+  { ClkTagBar,            0,                   Button4,        viewtoleft,     {0} },
+  { ClkTagBar,            0,                   Button5,        viewtoright,    {0} },
+  #endif
 };
 
 #if DWMC_PATCH
