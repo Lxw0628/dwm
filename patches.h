@@ -615,7 +615,7 @@
  * This patch can be a bit wonky with other layouts, but generally works.
  * https://dwm.suckless.org/patches/dragmfact/
  */
-#define DRAGMFACT_PATCH 0
+#define DRAGMFACT_PATCH 1
 
 /* Simple dwmc client using a fork of fsignal to communicate with dwm.
  * To use this either copy the patch/dwmc shell script to somewhere in your path or
@@ -1024,7 +1024,7 @@
  * will be restored.
  * https://dwm.suckless.org/patches/save_floats/
  */
-#define SAVEFLOATS_PATCH 1
+#define SAVEFLOATS_PATCH 0
 
 /* The scratchpad patch allows you to spawn or restore floating terminal windows.
  * It is typically useful when one need to do some short typing.
@@ -1418,7 +1418,7 @@
  * view (Mod-0) using a keyboard shortcut.
  * http://dwm.suckless.org/patches/winview/
  */
-#define WINVIEW_PATCH 0
+#define WINVIEW_PATCH 1
 
 /* Remember keyboard layout per client.
  * It is recommended that you configure xkb before using this patch as described in

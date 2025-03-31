@@ -1120,7 +1120,7 @@ static const Key keys[] = {
 	{ 0,                            HOLDKEY,       holdbar,                {0} },
 	#endif // BAR_HOLDBAR_PATCH
 	#if WINVIEW_PATCH
-	{ MODKEY,                       XK_o,          winview,                {0} },
+	{ MODKEY,                       XK_grave,      winview,                {0} },
 	#endif // WINVIEW_PATCH
 	#if XRDB_PATCH && !BAR_VTCOLORS_PATCH
 	{ MODKEY|ShiftMask,             XK_F5,         xrdb,                   {.v = NULL } },
