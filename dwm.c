@@ -5202,8 +5202,12 @@ view(const Arg *arg)
 	#else
 	selmon->seltags ^= 1; /* toggle sel tagset */
 	#endif // VIEW_HISTORY_PATCH
-	if (arg->ui & TAGMASK)
+	if (arg->ui & TAGMASK) {
 		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
+
+    selmon->pertag->curtag = 0;
+    setlayout(&((Arg){.v = &layouts[10]}));
+  }
 	#if PERTAG_PATCH
 	pertagview(arg);
 	#endif // PERTAG_PATCH
