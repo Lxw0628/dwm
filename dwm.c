@@ -760,6 +760,7 @@ static Window lastfocusedwin = None;
 
 static void restart(const Arg *arg);
 static void toggleallgaps(const Arg *arg);
+static void toggleallbar(const Arg *arg);
 void centerfloat(const Arg *arg);
 
 /* bar functions */
@@ -5431,6 +5432,60 @@ toggleallgaps(const Arg *arg)
     #else
     arrange(NULL);
     #endif // PERTAG_VANITYGAPS_PATCH | PERMON_VANITYGAPS_PATCH
+}
+
+static void
+toggleallbar(const Arg *arg)
+{
+  Bar *bar;
+  Monitor *m;
+  int i;
+  int target_state;
+
+  // 获取当前监视器
+  m = selmon;
+
+  // 确定当前标签页的状态栏状态
+  #if PERTAG_PATCH && PERTAGBAR_PATCH
+  int current_showbar = m->pertag->showbars[m->pertag->curtag];
+  #else
+  int current_showbar = m->showbar;
+  #endif
+
+  // 确定目标状态：如果当前显示则隐藏，反之则显示
+  #if BAR_HOLDBAR_PATCH
+  target_state = (current_showbar == 1) ? 0 : 1;
+  #else
+  target_state = !current_showbar;
+  #endif
+
+  #if PERTAG_PATCH && PERTAGBAR_PATCH
+  // 如果有 pertag 和 pertagbar 补丁，设置所有标签页的状态
+  for (i = 0; i <= NUMTAGS; i++) {
+      m->pertag->showbars[i] = target_state;
+  }
+  // 更新当前标签页的状态
+  m->showbar = m->pertag->showbars[m->pertag->curtag];
+  #else
+  // 如果没有 pertag 补丁，直接设置全局状态
+  m->showbar = target_state;
+  #endif // PERTAG_PATCH
+
+  // 更新状态栏位置
+  updatebarpos(m);
+
+  // 调整所有状态栏窗口的位置和大小
+  for (bar = m->bar; bar; bar = bar->next)
+      XMoveResizeWindow(dpy, bar->win, bar->bx, bar->by, bar->bw, bar->bh);
+
+  #if BAR_SYSTRAY_PATCH
+  // 处理系统托盘
+  if (!m->showbar && systray)
+      XMoveWindow(dpy, systray->win, -32000, -32000);
+  #endif // BAR_SYSTRAY_PATCH
+
+  // 重新排列窗口
+  arrange(m);
 }
 
 void

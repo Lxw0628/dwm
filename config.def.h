@@ -1858,5 +1858,6 @@ static IPCCommand ipccommands[] = {
 	IPCCOMMAND( xrdb, 1, {ARG_TYPE_NONE} ),
 	#endif // XRDB_PATCH
   IPCCOMMAND( toggleallgaps, 1, {ARG_TYPE_NONE} ),
+  IPCCOMMAND( toggleallbar, 1, {ARG_TYPE_NONE} ),
 };
 #endif // IPC_PATCH
