@@ -16,6 +16,7 @@ run_once xfce4-power-manager xfce4-power-manager
 run_once udiskie udiskie --tray
 run_once dunst dunst
 run_once warpd warpd
+# run_once clash-verge clash-verge
 
 # === 显示器/硬件设置 ===
 xset -b off
@@ -23,7 +24,7 @@ numlockx on
 xrdb merge ~/.Xresources
 xset r rate 200 50
 xrandr --output HDMI-2 --mode 1920x1080 --rate 120.00 --output eDP-1 --off
-"$HOME/Scripts/wallpapers.sh" "default"
+"$HOME/Scripts/wallpapers.sh" "random"
 
 # === dwm 相关程序（需随 dwm 重启） ===
 pkill dwm_statusbar  # 先终止旧状态栏
@@ -41,6 +42,8 @@ run_once pa-applet pa-applet
 # === 其他程序 ===
 run_once Snipaste Snipaste
 run_once otd-daemon otd-daemon
+run_once thunderbird thunderbird
+run_once birdtray birdtray
 
 # === dwm-msg ===
 "$HOME/Scripts/dwm-msg.sh"
