@@ -760,7 +760,7 @@ static Window lastfocusedwin = None;
 
 static void restart(const Arg *arg);
 static void toggleallgaps(const Arg *arg);
-
+void centerfloat(const Arg *arg);
 
 /* bar functions */
 
@@ -5431,6 +5431,49 @@ toggleallgaps(const Arg *arg)
     #else
     arrange(NULL);
     #endif // PERTAG_VANITYGAPS_PATCH | PERMON_VANITYGAPS_PATCH
+}
+
+void
+centerfloat(const Arg *arg)
+{
+  Client *c;
+  Monitor *m;
+
+  // 获取当前聚焦的客户端
+  if (!(c = selmon->sel)) return;
+
+  if (!c->isfloating) return;
+
+  // BUG: 只保存了一次单窗口原始尺寸
+  /* static int orig_w = 0, orig_h = 0, orig_x = 0, orig_y = 0; */
+  /* if (orig_w == 0) { */
+  /*   orig_w = c->w; */
+  /*   orig_h = c->h; */
+  /*   orig_x = c->x; */
+  /*   orig_y = c->y; */
+  /* } else { */
+  /*   // 再次按下恢复原始尺寸 */
+  /*   resize(c, orig_x, orig_y, orig_w, orig_h, 0); */
+  /*   orig_w = orig_h = orig_x = orig_y = 0; */
+  /*   return; */
+  /* } */
+
+  m = c->mon;
+
+  // 计算新尺寸：屏幕宽高的2/3
+  int nw = m->ww * 2 / 3;
+  int nh = m->wh * 2 / 3;
+
+  // 计算居中位置
+  int nx = m->mx + (m->mw - nw) / 2;
+  int ny = m->my + (m->mh - nh) / 2;
+
+  // 应用新尺寸和位置
+  resize(c, nx, ny, nw, nh, 0);
+
+  // 强制刷新窗口
+  XRaiseWindow(dpy, c->win);
+  /* XMapRaised(dpy, c->win); */
 }
 
 int

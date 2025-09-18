@@ -1367,6 +1367,7 @@ static const Key keys[] = {
 
   { MODKEY|ControlMask,           XK_k,          focussame,              {.i = +1 } }, // focussame 函数在util.c内
   { MODKEY|ControlMask,           XK_j,          focussame,              {.i = -1 } },
+  { MODKEY|ControlMask,           XK_Return,     centerfloat,            {0} },
 };
 
 #if KEYMODES_PATCH
