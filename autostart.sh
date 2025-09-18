@@ -22,7 +22,7 @@ run_once warpd warpd
 xset -b off
 numlockx on
 xrdb merge ~/.Xresources
-xset r rate 200 50
+xset r rate 300 50
 xrandr --output HDMI-2 --mode 1920x1080 --rate 120.00 --output eDP-1 --off
 "$HOME/Scripts/wallpapers.sh" "random"
 
