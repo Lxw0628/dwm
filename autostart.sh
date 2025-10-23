@@ -16,7 +16,14 @@ run_once xfce4-power-manager xfce4-power-manager
 run_once udiskie udiskie --tray
 run_once dunst dunst
 run_once warpd warpd
-# run_once clash-verge clash-verge
+run_once clash-verge clash-verge
+run_once nm-applet nm-applet
+# run_once blueman-applet blueman-applet
+run_once pa-applet pa-applet
+run_once Snipaste Snipaste
+# run_once otd-daemon otd-daemon
+# run_once thunderbird thunderbird
+# run_once birdtray birdtray
 
 # === 显示器/硬件设置 ===
 xset -b off
@@ -33,17 +40,6 @@ dwm_statusbar &      # 启动新状态栏
 # 若 picom 已存在，先终止旧进程
 pkill picom
 picom --config ~/.config/picom/picom.conf &
-
-# 托盘程序（确保只启动一次）
-run_once nm-applet nm-applet
-# run_once blueman-applet blueman-applet
-run_once pa-applet pa-applet
-
-# === 其他程序 ===
-run_once Snipaste Snipaste
-run_once otd-daemon otd-daemon
-run_once thunderbird thunderbird
-run_once birdtray birdtray
 
 # === dwm-msg ===
 "$HOME/Scripts/dwm-msg.sh"
